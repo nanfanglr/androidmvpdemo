@@ -12,3 +12,4 @@
 * Butterknife 
 * Retrolambda
 * Stetho
+* EasyPermissions 
