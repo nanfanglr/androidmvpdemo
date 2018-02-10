@@ -10,7 +10,5 @@
 * Timber
 * Glide with a wrapper
 * Butterknife 
-* AssertJ for fluent assertions
-* Fabric (Crashlytics and Answers)
 * Retrolambda
 * Stetho
