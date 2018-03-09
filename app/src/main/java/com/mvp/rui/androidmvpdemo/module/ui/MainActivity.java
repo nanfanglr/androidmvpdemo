@@ -6,7 +6,7 @@ import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.base.activity.BaseActivity;
 import com.mvp.rui.androidmvpdemo.module.di.contract.MainView;
 import com.mvp.rui.androidmvpdemo.module.presenter.MainPresenter;
-import com.mvp.rui.androidmvpdemo.module.viewstate.MainActivityViewstate;
+import com.mvp.rui.androidmvpdemo.module.viewstate.MainActivityViewState;
 
 /**
  * 2018.2.10 上传GitHub测试
@@ -14,7 +14,7 @@ import com.mvp.rui.androidmvpdemo.module.viewstate.MainActivityViewstate;
 public class MainActivity extends BaseActivity<
         MainView
         , MainPresenter
-        , MainActivityViewstate> implements MainView {
+        , MainActivityViewState> implements MainView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

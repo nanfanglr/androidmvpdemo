@@ -1,8 +1,10 @@
-package com.example.features.dashboard.dagger;
+package com.mvp.rui.androidmvpdemo.module.di.module;
 
 import android.content.Context;
-import com.example.features.dashboard.view.MainActivity;
-import com.example.tools.dagger.scopes.ActivityContext;
+
+import com.mvp.rui.androidmvpdemo.base.dagger.scopes.ActivityContext;
+import com.mvp.rui.androidmvpdemo.module.ui.MainActivity;
+
 import dagger.Binds;
 import dagger.Module;
 
