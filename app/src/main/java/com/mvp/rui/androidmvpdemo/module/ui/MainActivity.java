@@ -1,18 +1,43 @@
-package com.mvp.rui.androidmvpdemo.ui;
+package com.mvp.rui.androidmvpdemo.module.ui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.mvp.rui.androidmvpdemo.R;
+import com.mvp.rui.androidmvpdemo.base.activity.BaseActivity;
+import com.mvp.rui.androidmvpdemo.module.di.contract.MainView;
+import com.mvp.rui.androidmvpdemo.module.presenter.MainPresenter;
+import com.mvp.rui.androidmvpdemo.module.viewstate.MainActivityViewstate;
 
 /**
- * 2018.2.10上传GitHub测试
+ * 2018.2.10 上传GitHub测试
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<
+        MainView
+        , MainPresenter
+        , MainActivityViewstate> implements MainView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void showLoadingBar() {
+
+    }
+
+    @Override
+    public void dismissLoadingBar() {
+
+    }
+
+    @Override
+    public void showLoadingFailureError() {
+
     }
 }
