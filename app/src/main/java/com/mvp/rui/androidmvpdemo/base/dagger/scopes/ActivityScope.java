@@ -1,4 +1,4 @@
-package com.mvp.rui.androidmvpdemo.dagger.scopes;
+package com.mvp.rui.androidmvpdemo.base.dagger.scopes;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

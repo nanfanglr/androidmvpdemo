@@ -1,9 +1,9 @@
-package com.mvp.rui.androidmvpdemo.dagger.modules;
+package com.mvp.rui.androidmvpdemo.base.dagger.modules;
 
 
 import com.mvp.rui.androidmvpdemo.App;
 import com.mvp.rui.androidmvpdemo.BuildConfig;
-import com.mvp.rui.androidmvpdemo.networkconfig.PropertiesManager;
+import com.mvp.rui.androidmvpdemo.base.network.networkconfig.PropertiesManager;
 import com.mvp.rui.androidmvpdemo.networking.AuthenticationInterceptor;
 import com.mvp.rui.androidmvpdemo.networking.BaseUrlInterceptor;
 

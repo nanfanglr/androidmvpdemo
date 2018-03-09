@@ -3,8 +3,8 @@ package com.mvp.rui.androidmvpdemo;
 import android.app.Activity;
 import android.support.multidex.MultiDexApplication;
 
-import com.mvp.rui.androidmvpdemo.dagger.components.ApplicationComponent;
-import com.mvp.rui.androidmvpdemo.dagger.components.DaggerApplicationComponent;
+import com.mvp.rui.androidmvpdemo.base.dagger.components.ApplicationComponent;
+import com.mvp.rui.androidmvpdemo.base.dagger.components.DaggerApplicationComponent;
 import com.mvp.rui.androidmvpdemo.tools.stetho.StethoTool;
 
 import javax.inject.Inject;
@@ -14,7 +14,6 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import timber.log.Timber;
 
-@SuppressWarnings("checkstyle:ClassDataAbstractionCoupling")
 public class App extends MultiDexApplication implements HasActivityInjector {
 
     private static ApplicationComponent applicationComponent;
@@ -67,6 +66,5 @@ public class App extends MultiDexApplication implements HasActivityInjector {
     private void initStetho() {
         stethoTool.init();
     }
-
 
 }

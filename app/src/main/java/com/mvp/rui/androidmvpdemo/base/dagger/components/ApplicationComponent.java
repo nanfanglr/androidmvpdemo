@@ -1,11 +1,11 @@
-package com.mvp.rui.androidmvpdemo.dagger.components;
+package com.mvp.rui.androidmvpdemo.base.dagger.components;
 
 
 import com.mvp.rui.androidmvpdemo.App;
-import com.mvp.rui.androidmvpdemo.dagger.modules.ActivityBindingModule;
-import com.mvp.rui.androidmvpdemo.dagger.modules.AndroidModule;
-import com.mvp.rui.androidmvpdemo.dagger.modules.ApplicationModule;
-import com.mvp.rui.androidmvpdemo.dagger.modules.NetworkModule;
+import com.mvp.rui.androidmvpdemo.base.dagger.modules.ActivityBindingModule;
+import com.mvp.rui.androidmvpdemo.base.dagger.modules.AndroidModule;
+import com.mvp.rui.androidmvpdemo.base.dagger.modules.ApplicationModule;
+import com.mvp.rui.androidmvpdemo.base.dagger.modules.NetworkModule;
 
 import javax.inject.Singleton;
 

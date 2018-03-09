@@ -1,6 +1,6 @@
 package com.mvp.rui.androidmvpdemo.networking;
 
-import com.mvp.rui.androidmvpdemo.networkconfig.PropertiesManager;
+import com.mvp.rui.androidmvpdemo.base.network.networkconfig.PropertiesManager;
 
 import java.io.IOException;
 

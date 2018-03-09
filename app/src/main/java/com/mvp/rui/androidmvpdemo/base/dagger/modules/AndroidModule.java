@@ -1,4 +1,4 @@
-package com.mvp.rui.androidmvpdemo.dagger.modules;
+package com.mvp.rui.androidmvpdemo.base.dagger.modules;
 
 import android.content.res.AssetManager;
 import android.content.res.Resources;

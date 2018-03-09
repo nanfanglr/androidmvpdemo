@@ -1,11 +1,11 @@
-package com.mvp.rui.androidmvpdemo.dagger.modules;
+package com.mvp.rui.androidmvpdemo.base.dagger.modules;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 
 import com.mvp.rui.androidmvpdemo.App;
-import com.mvp.rui.androidmvpdemo.dagger.scopes.ApplicationContext;
-import com.mvp.rui.androidmvpdemo.networkconfig.PropertiesManager;
+import com.mvp.rui.androidmvpdemo.base.dagger.scopes.ApplicationContext;
+import com.mvp.rui.androidmvpdemo.base.network.networkconfig.PropertiesManager;
 import com.mvp.rui.androidmvpdemo.tools.images.ImageLoader;
 import com.mvp.rui.androidmvpdemo.tools.stetho.StethoTool;
 import com.mvp.rui.androidmvpdemo.tools.stetho.StethoToolImpl;
