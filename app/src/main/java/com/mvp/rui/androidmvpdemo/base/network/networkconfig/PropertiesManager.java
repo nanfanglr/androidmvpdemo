@@ -2,6 +2,7 @@ package com.mvp.rui.androidmvpdemo.base.network.networkconfig;
 
 import android.content.res.AssetManager;
 
+import com.mvp.rui.androidmvpdemo.BuildConfig;
 import com.mvp.rui.androidmvpdemo.base.nullability.Preconditions;
 
 import java.io.IOException;
@@ -38,14 +39,14 @@ public class PropertiesManager {
     }
 
     public String getDribleClientAccessToken() {
-
         @Nullable String authToken = properties.getProperty(Property.DRIBBLE_CLIENT_ACCESS_TOKEN.getPropertyKey());
         Preconditions.checkNotNull(authToken);
         return authToken;
     }
 
     public String getBaseUrl() {
-        @Nullable String baseUrl = properties.getProperty(Property.BASE_URL.getPropertyKey());
+        @Nullable String baseUrl = BuildConfig.DEBUG ? properties.getProperty(Property.BASE_URL_DEV.getPropertyKey())
+                : properties.getProperty(Property.BASE_URL.getPropertyKey());
         Preconditions.checkNotNull(baseUrl);
         return baseUrl;
     }
@@ -53,17 +54,16 @@ public class PropertiesManager {
     private enum Property {
 
         DRIBBLE_CLIENT_ACCESS_TOKEN("dribbleClientAccessToken"),
-        BASE_URL("dribbleBaseUrl");
+        BASE_URL("dribbleBaseUrl"),
+        BASE_URL_DEV("dribbleBaseUrlDev");
 
         private final String propertyKey;
 
         Property(String authToken) {
-
             this.propertyKey = authToken;
         }
 
         public String getPropertyKey() {
-
             return propertyKey;
         }
     }
