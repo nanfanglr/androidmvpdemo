@@ -23,7 +23,8 @@ public abstract class MainActivityModule {
     abstract Context providesActivityContext(MainActivity mainActivity);
 
     /**
-     * 通过接口来接收类的写法，必须在实现类的构造方法上加上@inject
+     * 通过接口来接收类的写法，必须在实现类的构造方法上加上@inject；
+     * 如果是通过本类来接收的话，不写需要此方法；
      *
      * @param testInnerImpl
      * @return
@@ -32,7 +33,7 @@ public abstract class MainActivityModule {
     abstract TestContract.TestInner providesTest2(TestInnerImpl testInnerImpl);
 
     /**
-     * new 的对象写法
+     * provides 的对象写法
      *
      * @return
      */

@@ -1,4 +1,4 @@
-package com.mvp.rui.androidmvpdemo.networkservice;
+package com.mvp.rui.androidmvpdemo.module.networkservice;
 
 public interface MainService {
 

@@ -29,6 +29,8 @@ public class MainActivity extends BaseActivity<
     @Inject
     Test test;
 
+    //这个是通过接口接收的，不能通过实现类上面的构造来注入
+    //如果是通过本类来接收的，可以直接通过构造来注入
     @Inject
     TestContract.TestInner test2;
 
