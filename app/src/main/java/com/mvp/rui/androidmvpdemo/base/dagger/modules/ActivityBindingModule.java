@@ -9,7 +9,11 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 public abstract class ActivityBindingModule {
-
+    /**
+     * 注入依赖到MainActivity
+     *
+     * @return
+     */
     @ActivityScope
     @ContributesAndroidInjector(modules = MainActivityModule.class)
     abstract MainActivity contributeMainActivityInjector();
