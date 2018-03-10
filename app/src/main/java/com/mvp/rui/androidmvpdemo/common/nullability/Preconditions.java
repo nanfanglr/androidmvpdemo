@@ -1,4 +1,4 @@
-package com.mvp.rui.androidmvpdemo.base.nullability;
+package com.mvp.rui.androidmvpdemo.common.nullability;
 
 import javax.annotation.Nullable;
 

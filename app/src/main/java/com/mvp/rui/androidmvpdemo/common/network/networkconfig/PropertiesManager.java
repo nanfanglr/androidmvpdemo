@@ -1,9 +1,9 @@
-package com.mvp.rui.androidmvpdemo.base.network.networkconfig;
+package com.mvp.rui.androidmvpdemo.common.network.networkconfig;
 
 import android.content.res.AssetManager;
 
 import com.mvp.rui.androidmvpdemo.BuildConfig;
-import com.mvp.rui.androidmvpdemo.base.nullability.Preconditions;
+import com.mvp.rui.androidmvpdemo.common.nullability.Preconditions;
 
 import java.io.IOException;
 import java.io.InputStream;

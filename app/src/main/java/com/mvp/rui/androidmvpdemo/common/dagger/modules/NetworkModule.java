@@ -1,10 +1,10 @@
-package com.mvp.rui.androidmvpdemo.base.dagger.modules;
+package com.mvp.rui.androidmvpdemo.common.dagger.modules;
 
 
 import com.mvp.rui.androidmvpdemo.BuildConfig;
-import com.mvp.rui.androidmvpdemo.base.network.networkconfig.PropertiesManager;
-import com.mvp.rui.androidmvpdemo.base.network.networking.AuthenticationInterceptor;
-import com.mvp.rui.androidmvpdemo.base.network.networking.BaseUrlInterceptor;
+import com.mvp.rui.androidmvpdemo.common.network.networkconfig.PropertiesManager;
+import com.mvp.rui.androidmvpdemo.common.network.networking.AuthenticationInterceptor;
+import com.mvp.rui.androidmvpdemo.common.network.networking.BaseUrlInterceptor;
 
 import javax.inject.Singleton;
 

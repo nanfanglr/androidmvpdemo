@@ -1,6 +1,6 @@
-package com.mvp.rui.androidmvpdemo.base.dagger.modules;
+package com.mvp.rui.androidmvpdemo.common.dagger.modules;
 
-import com.mvp.rui.androidmvpdemo.base.dagger.scopes.ActivityScope;
+import com.mvp.rui.androidmvpdemo.common.dagger.scopes.ActivityScope;
 import com.mvp.rui.androidmvpdemo.module.di.module.MainActivityModule;
 import com.mvp.rui.androidmvpdemo.module.ui.MainActivity;
 

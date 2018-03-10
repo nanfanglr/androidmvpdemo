@@ -2,7 +2,7 @@ package com.mvp.rui.androidmvpdemo.module.di.module;
 
 import android.content.Context;
 
-import com.mvp.rui.androidmvpdemo.base.dagger.scopes.ActivityContext;
+import com.mvp.rui.androidmvpdemo.common.dagger.scopes.ActivityContext;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
 import com.mvp.rui.androidmvpdemo.example.TestInnerImpl;

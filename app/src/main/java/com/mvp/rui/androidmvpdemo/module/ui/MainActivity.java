@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
-import com.mvp.rui.androidmvpdemo.base.activity.BaseActivity;
+import com.mvp.rui.androidmvpdemo.common.activity.BaseActivity;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
 import com.mvp.rui.androidmvpdemo.module.di.contract.MainView;

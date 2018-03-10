@@ -1,4 +1,4 @@
-package com.mvp.rui.androidmvpdemo.base.basemvp;
+package com.mvp.rui.androidmvpdemo.common.basemvp;
 
 import android.support.annotation.UiThread;
 

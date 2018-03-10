@@ -1,4 +1,4 @@
-package com.mvp.rui.androidmvpdemo.base.network.networking;
+package com.mvp.rui.androidmvpdemo.common.network.networking;
 
 import java.io.IOException;
 

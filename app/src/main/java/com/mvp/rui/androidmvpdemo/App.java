@@ -3,8 +3,8 @@ package com.mvp.rui.androidmvpdemo;
 import android.app.Activity;
 import android.support.multidex.MultiDexApplication;
 
-import com.mvp.rui.androidmvpdemo.base.dagger.components.ApplicationComponent;
-import com.mvp.rui.androidmvpdemo.base.dagger.components.DaggerApplicationComponent;
+import com.mvp.rui.androidmvpdemo.common.dagger.components.ApplicationComponent;
+import com.mvp.rui.androidmvpdemo.common.dagger.components.DaggerApplicationComponent;
 import com.mvp.rui.androidmvpdemo.tools.stetho.StethoTool;
 
 import javax.inject.Inject;

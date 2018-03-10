@@ -1,4 +1,4 @@
-package com.mvp.rui.androidmvpdemo.base.activity;
+package com.mvp.rui.androidmvpdemo.common.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
