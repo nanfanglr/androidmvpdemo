@@ -1,19 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".module.ui.MainActivity">
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/rl_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="6dp">
 
-</android.support.constraint.ConstraintLayout>
+        <FrameLayout
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/radioGroup"
+            android:divider="#00000000"
+            android:dividerHeight="0px" />
+
+        <View
+            android:id="@+id/view_mainapp"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_above="@+id/radioGroup"
+            android:background="@android:color/darker_gray" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingTop="6dp">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="6dp"
+                android:drawableTop="@drawable/selector_home"
+                android:gravity="center"
+                android:text="首页"
+                android:textColor="@drawable/selector_text_color"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/rb_index"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawablePadding="6dp"
+                android:drawableTop="@drawable/selector_mall"
+                android:gravity="center"
+                android:text="商城"
+                android:textColor="@drawable/selector_text_color"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text=""
+                android:textSize="12sp"
+                android:visibility="invisible" />
+
+            <RadioButton
+                android:id="@+id/rb_offer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawablePadding="6dp"
+                android:drawableTop="@drawable/selector_offer"
+                android:gravity="center"
+                android:text="报价"
+                android:textColor="@drawable/selector_text_color"
+                android:textSize="12sp" />
+
+
+            <RadioButton
+                android:id="@+id/rb_connections"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawablePadding="6dp"
+                android:drawableTop="@drawable/selector_connections"
+                android:gravity="center"
+                android:text="人脉"
+                android:textColor="@drawable/selector_text_color"
+                android:textSize="12sp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="6dp"
+            android:drawableTop="@drawable/icon_publish"
+            android:gravity="center"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:text="发布"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/iv_connetion_msgcount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/view_mainapp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:maxLength="2"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            android:visibility="gone"
+            tools:text="99"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+</RelativeLayout>
+
+
+

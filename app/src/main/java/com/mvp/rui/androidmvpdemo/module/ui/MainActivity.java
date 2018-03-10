@@ -1,6 +1,11 @@
 package com.mvp.rui.androidmvpdemo.module.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
@@ -23,8 +28,26 @@ public class MainActivity extends BaseActivity<
         , MainPresenter
         , MainActivityViewState> implements MainView {
 
-    @BindView(R.id.tv)
-    TextView tv;
+    @BindView(R.id.fl_container)
+    FrameLayout flContainer;
+    @BindView(R.id.view_mainapp)
+    View viewMainapp;
+    @BindView(R.id.rb_home)
+    RadioButton rbHome;
+    @BindView(R.id.rb_index)
+    RadioButton rbIndex;
+    @BindView(R.id.rb_offer)
+    RadioButton rbOffer;
+    @BindView(R.id.rb_connections)
+    RadioButton rbConnections;
+    @BindView(R.id.radioGroup)
+    RadioGroup radioGroup;
+    @BindView(R.id.tv_publish)
+    TextView tvPublish;
+    @BindView(R.id.iv_connetion_msgcount)
+    TextView ivConnetionMsgcount;
+    @BindView(R.id.rl_home)
+    RelativeLayout rlHome;
 
     @Inject
     Test test;
@@ -37,7 +60,7 @@ public class MainActivity extends BaseActivity<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tv.setText("" + test2.toString());
+
     }
 
     @Override

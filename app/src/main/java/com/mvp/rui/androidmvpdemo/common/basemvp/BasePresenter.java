@@ -10,7 +10,6 @@ import io.reactivex.disposables.CompositeDisposable;
 /**
  * Created by rui on 2018/3/9.
  */
-
 public class BasePresenter<T extends MvpView> extends MvpNullObjectBasePresenter<T> {
 
     protected CompositeDisposable composite;
@@ -22,9 +21,9 @@ public class BasePresenter<T extends MvpView> extends MvpNullObjectBasePresenter
     }
 
     @Override
-    public void detachView(boolean retainInstance) {
-        super.detachView(retainInstance);
-        if (!retainInstance && composite != null && !composite.isDisposed()) {
+    public void detachView() {
+        super.detachView();
+        if (composite != null && !composite.isDisposed()) {
             composite.dispose();
         }
     }
