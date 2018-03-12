@@ -52,7 +52,7 @@
                 android:textSize="12sp" />
 
             <RadioButton
-                android:id="@+id/rb_index"
+                android:id="@+id/rb_mall"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

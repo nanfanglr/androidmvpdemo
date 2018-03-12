@@ -16,8 +16,6 @@ import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import dagger.android.AndroidInjection;
-
 /**
  * Created by rui on 2018/3/9.
  */
@@ -25,8 +23,9 @@ public abstract class BaseActivity<
         VIEW extends MvpView,
         PRESENTER extends MvpPresenter<VIEW>,
         VIEW_STATE extends ViewState<VIEW>>
-        extends BaseAppCompatActivity implements MvpViewStateDelegateCallback<VIEW, PRESENTER, VIEW_STATE> {
-
+        extends BaseAppCompatActivity
+        implements
+        MvpViewStateDelegateCallback<VIEW, PRESENTER, VIEW_STATE> {
 
     /**
      * Can't inject directly, as the presenter instantiation needs to happen by mosby in {@link this#createPresenter()}.
@@ -54,10 +53,9 @@ public abstract class BaseActivity<
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AndroidInjection.inject(this);
         getMvpDelegate().onCreate(savedInstanceState);
     }
-    
+
     // Delegate propagation ****************************************************************************************************************
 
     private ActivityMvpDelegate<VIEW, PRESENTER> getMvpDelegate() {

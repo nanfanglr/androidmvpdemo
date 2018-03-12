@@ -12,9 +12,9 @@ import com.mvp.rui.androidmvpdemo.common.fragment.BaseFragment;
  */
 public class ConnectionFragment extends BaseFragment {
 
-    public static Fragment newInstance(Context context) {
+    public static ConnectionFragment newInstance(Context context) {
         Bundle bundle = new Bundle();
-        return Fragment.instantiate(context, ConnectionFragment.class.getName(), bundle);
+        return (ConnectionFragment) Fragment.instantiate(context, ConnectionFragment.class.getName(), bundle);
     }
 
     @Override

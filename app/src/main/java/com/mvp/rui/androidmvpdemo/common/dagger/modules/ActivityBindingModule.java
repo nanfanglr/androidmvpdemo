@@ -1,7 +1,7 @@
 package com.mvp.rui.androidmvpdemo.common.dagger.modules;
 
 import com.mvp.rui.androidmvpdemo.common.dagger.scopes.ActivityScope;
-import com.mvp.rui.androidmvpdemo.module.di.module.MainActivityModule;
+import com.mvp.rui.androidmvpdemo.module.di.module.MainActModule;
 import com.mvp.rui.androidmvpdemo.module.ui.MainActivity;
 
 import dagger.Module;
@@ -15,7 +15,7 @@ public abstract class ActivityBindingModule {
      * @return
      */
     @ActivityScope
-    @ContributesAndroidInjector(modules = MainActivityModule.class)
+    @ContributesAndroidInjector(modules = MainActModule.class)
     abstract MainActivity contributeMainActivityInjector();
 
 //    @ActivityScope

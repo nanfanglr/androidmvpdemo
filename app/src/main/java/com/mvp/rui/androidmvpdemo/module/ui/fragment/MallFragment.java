@@ -12,9 +12,9 @@ import com.mvp.rui.androidmvpdemo.common.fragment.BaseFragment;
  */
 public class MallFragment extends BaseFragment {
 
-    public static Fragment newInstance(Context context) {
+    public static MallFragment newInstance(Context context) {
         Bundle bundle = new Bundle();
-        return Fragment.instantiate(context, MallFragment.class.getName(), bundle);
+        return (MallFragment) Fragment.instantiate(context, MallFragment.class.getName(), bundle);
     }
 
     

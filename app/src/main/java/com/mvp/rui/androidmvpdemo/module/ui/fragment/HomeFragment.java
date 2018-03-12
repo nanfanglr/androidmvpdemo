@@ -19,9 +19,9 @@ public class HomeFragment extends BaseLazyFragment<
         HomeFgViewState
         > {
 
-    public static Fragment newInstance(Context context) {
+    public static HomeFragment newInstance(Context context) {
         Bundle bundle = new Bundle();
-        return Fragment.instantiate(context, HomeFragment.class.getName(), bundle);
+        return (HomeFragment) Fragment.instantiate(context, HomeFragment.class.getName(), bundle);
     }
 
     @Override
