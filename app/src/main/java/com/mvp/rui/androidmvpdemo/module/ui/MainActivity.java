@@ -12,9 +12,9 @@ import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.common.activity.BaseActivity;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
-import com.mvp.rui.androidmvpdemo.module.di.contract.MainView;
-import com.mvp.rui.androidmvpdemo.module.presenter.MainPresenter;
-import com.mvp.rui.androidmvpdemo.module.viewstate.MainActivityViewState;
+import com.mvp.rui.androidmvpdemo.module.di.contract.MainActView;
+import com.mvp.rui.androidmvpdemo.module.presenter.MainActPresenter;
+import com.mvp.rui.androidmvpdemo.module.viewstate.MainActViewState;
 
 import javax.inject.Inject;
 
@@ -24,9 +24,9 @@ import butterknife.BindView;
  * 2018.2.10 上传GitHub测试
  */
 public class MainActivity extends BaseActivity<
-        MainView
-        , MainPresenter
-        , MainActivityViewState> implements MainView {
+        MainActView
+        , MainActPresenter
+        , MainActViewState> implements MainActView {
 
     @BindView(R.id.fl_container)
     FrameLayout flContainer;

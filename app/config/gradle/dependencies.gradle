@@ -36,6 +36,7 @@ ext.projectDependencies = [
         supportLibsRecyclerview                 : "com.android.support:recyclerview-v7:$versions.supportLibraries",
         supportLibsConstraintLayout             : "com.android.support.constraint:constraint-layout:$versions.constraintLayout",
         supportLibsMultiDex                     : "com.android.support:multidex:$versions.multidexLib",
+        supportDesign                           : "com.android.support:design:$versions.supportLibraries",
 
         // Dagger dependency injection - Includes android specific components
         daggerAnnotationProcessor               : "com.google.dagger:dagger-compiler:$versions.dagger",

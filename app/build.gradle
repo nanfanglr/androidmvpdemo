@@ -82,6 +82,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation projectDependencies.supportLibsAppCompat
     implementation projectDependencies.supportLibsConstraintLayout
+    implementation projectDependencies.supportDesign
 
     // Logging
     implementation projectDependencies.timber
