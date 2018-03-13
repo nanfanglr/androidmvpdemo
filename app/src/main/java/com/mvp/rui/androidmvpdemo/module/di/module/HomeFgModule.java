@@ -25,7 +25,6 @@ public abstract class HomeFgModule {
     @PerFragment
     abstract Fragment fragment(HomeFragment homeFragment);
 
-
     /**
      * Provides the injector for the {@link HomeChildFragment}, which has access to the
      * dependencies provided by this fragment and activity and application instance

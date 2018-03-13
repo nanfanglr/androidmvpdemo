@@ -59,14 +59,19 @@ public class MainActivity extends BaseActivity<
     @BindView(R.id.rl_home)
     RelativeLayout rlHome;
 
-    @Inject
-    HomeFragment homeFragment;
-    @Inject
-    MallFragment mallFragment;
-    @Inject
-    OfferFragment offerFragment;
-    @Inject
-    ConnectionFragment connectionFragment;
+//通过注入的方式fragment不能马上attached到activity，因此无法获得childfragment的fragmentmanager对象
+//    @Inject
+//    @Named(BaseFragmentModule.FRAGMENT)
+//    Fragment homeFragment;
+//    @Inject
+//    @Named(BaseFragmentModule.FRAGMENT)
+//    MallFragment mallFragment;
+//    @Inject
+//    @Named(BaseFragmentModule.FRAGMENT)
+//    OfferFragment offerFragment;
+//    @Inject
+//    @Named(BaseFragmentModule.FRAGMENT)
+//    ConnectionFragment connectionFragment;
 
     @Inject
     Test test;
@@ -99,16 +104,16 @@ public class MainActivity extends BaseActivity<
         } else {
             if (TextUtils.equals(fragmentTag, APPValue.FRAGMENT_HOME)) {
                 //加载首页
-                fragment = homeFragment;
+                fragment = HomeFragment.newInstance(this);
             } else if (TextUtils.equals(fragmentTag, APPValue.FRAGMENT_OFFER)) {
                 //加载报价
-                fragment = offerFragment;
+                fragment = OfferFragment.newInstance(this);
             } else if (TextUtils.equals(fragmentTag, APPValue.FRAGMENT_Mall)) {
                 //加载商城
-                fragment = mallFragment;
+                fragment = MallFragment.newInstance(this);
             } else if (TextUtils.equals(fragmentTag, APPValue.FRAGMENT_CONNECTIONS)) {
                 //加载人脉
-                fragment = connectionFragment;
+                fragment = ConnectionFragment.newInstance(this);
             }
             if (fragment != null) {
                 fragmentManager.beginTransaction().add(R.id.fl_container

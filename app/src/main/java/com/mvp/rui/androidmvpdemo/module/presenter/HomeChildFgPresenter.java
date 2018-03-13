@@ -12,6 +12,7 @@ public class HomeChildFgPresenter extends BasePresenter<HomeChildFgView> {
 
     @Inject
     public HomeChildFgPresenter() {
+
     }
 
 }

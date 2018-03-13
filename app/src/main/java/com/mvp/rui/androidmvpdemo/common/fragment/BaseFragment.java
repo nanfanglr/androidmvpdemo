@@ -1,8 +1,5 @@
 package com.mvp.rui.androidmvpdemo.common.fragment;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +9,6 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import dagger.android.support.AndroidSupportInjection;
 
 /**
  * Created by 0200030 on 2017/9/2.
@@ -21,6 +17,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected View rootView;
     protected Unbinder unbinder;
+
 
     @Nullable
     @Override
@@ -48,31 +45,6 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroyView();
         if (unbinder != null)
             unbinder.unbind();
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onAttach(Activity activity) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            // Perform injection here before M, L (API 22) and below because onAttach(Context)
-            // is not yet available at L.
-            AndroidSupportInjection.inject(this);
-        }
-        super.onAttach(activity);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            // Perform injection here for M (API 23) due to deprecation of onAttach(Activity).
-            AndroidSupportInjection.inject(this);
-        }
-        super.onAttach(context);
     }
 
 }

@@ -1,12 +1,12 @@
 package com.mvp.rui.androidmvpdemo.module.di.module;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 
 import com.mvp.rui.androidmvpdemo.common.activity.BaseActivity;
 import com.mvp.rui.androidmvpdemo.common.dagger.modules.BaseActivityModule;
 import com.mvp.rui.androidmvpdemo.common.dagger.scopes.ActivityScope;
+import com.mvp.rui.androidmvpdemo.common.dagger.scopes.PerFragment;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
 import com.mvp.rui.androidmvpdemo.example.TestInnerImpl;
@@ -31,15 +31,19 @@ public abstract class MainActModule {
      * Provides the injector for the {@link HomeFgModule}, which has access to the dependencies
      * provided by this activity and application instance (singleton scoped objects).
      */
+    @PerFragment
     @ContributesAndroidInjector(modules = HomeFgModule.class)
     abstract HomeFragment homeFragmentInjector();
 
+    @PerFragment
     @ContributesAndroidInjector
     abstract OfferFragment offerFragmentInjector();
 
+    @PerFragment
     @ContributesAndroidInjector
     abstract MallFragment mallFragmentInjector();
 
+    @PerFragment
     @ContributesAndroidInjector
     abstract ConnectionFragment connectionFragmentInjector();
 
@@ -78,23 +82,27 @@ public abstract class MainActModule {
         return new Test();
     }
 
-    @Provides
-    static HomeFragment providesHomeFragment(Context context) {
-        return HomeFragment.newInstance(context);
-    }
-
-    @Provides
-    static OfferFragment providesOfferFragment(Context context) {
-        return OfferFragment.newInstance(context);
-    }
-
-    @Provides
-    static MallFragment providesMallFragment(Context context) {
-        return MallFragment.newInstance(context);
-    }
-
-    @Provides
-    static ConnectionFragment providesConnectionFragment(Context context) {
-        return ConnectionFragment.newInstance(context);
-    }
+//    @Provides
+//    @Named(BaseFragmentModule.FRAGMENT)
+//    static Fragment providesHomeFragment(Context context) {
+//        return HomeFragment.newInstance(context);
+//    }
+//
+//    @Provides
+//    @Named(BaseFragmentModule.FRAGMENT)
+//    static OfferFragment providesOfferFragment(Context context) {
+//        return OfferFragment.newInstance(context);
+//    }
+//
+//    @Provides
+//    @Named(BaseFragmentModule.FRAGMENT)
+//    static MallFragment providesMallFragment(Context context) {
+//        return MallFragment.newInstance(context);
+//    }
+//
+//    @Provides
+//    @Named(BaseFragmentModule.FRAGMENT)
+//    static ConnectionFragment providesConnectionFragment(Context context) {
+//        return ConnectionFragment.newInstance(context);
+//    }
 }

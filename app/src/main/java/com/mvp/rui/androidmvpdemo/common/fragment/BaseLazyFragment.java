@@ -24,7 +24,7 @@ public abstract class BaseLazyFragment<
         VIEW extends MvpView
         , PRESENTER extends MvpPresenter<VIEW>
         , VIEW_STATE extends ViewState<VIEW>>
-        extends BaseFragment
+        extends BaseDaggerFragment
         implements MvpViewStateDelegateCallback<VIEW, PRESENTER, VIEW_STATE>, LoadMvpView {
 
     //    protected View rootView;
@@ -54,7 +54,8 @@ public abstract class BaseLazyFragment<
     //    @Override
     protected FragmentMvpDelegate<VIEW, PRESENTER> getMvpDelegate() {
         if (mvpDelegate == null) {
-            mvpDelegate = new FragmentMvpViewStateDelegateImpl<>(this, this, true, true);
+            mvpDelegate = new FragmentMvpViewStateDelegateImpl<>(this, this
+                    , true, true);
         }
         return mvpDelegate;
     }
