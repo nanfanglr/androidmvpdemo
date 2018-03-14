@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.mvp.rui.androidmvpdemo.module.model.InfoCategory;
+
 import java.util.List;
 
 /**
@@ -12,12 +14,12 @@ import java.util.List;
 public class FgPagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> list;
-    //    private List<InfoCategory> selectedDatas;
-    private List<String> selectedDatas;
+        private List<InfoCategory> selectedDatas;
+//    private List<String> selectedDatas;
 
     public FgPagerAdapter(FragmentManager fm
             , List<Fragment> list
-            , List<String> selectedData) {
+            , List<InfoCategory> selectedData) {
         super(fm);
         this.list = list;
         this.selectedDatas = selectedData;
@@ -37,8 +39,8 @@ public class FgPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-//        return selectedDatas.get(position).getTitle();
-        return selectedDatas.get(position);
+        return selectedDatas.get(position).getTitle();
+//        return selectedDatas.get(position);
     }
 
     @Override

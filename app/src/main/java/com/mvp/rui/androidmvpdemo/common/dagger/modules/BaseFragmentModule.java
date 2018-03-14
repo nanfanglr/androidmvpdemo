@@ -47,4 +47,5 @@ public abstract class BaseFragmentModule {
     static FragmentManager childFragmentManager(@Named(FRAGMENT) Fragment fragment) {
         return fragment.getChildFragmentManager();
     }
+
 }

@@ -12,4 +12,13 @@ public interface APPValue {
     String FRAGMENT_CONNECTIONS = "connections";
     String FRAGMENT_LEFT = "left_info";
     int PAGE_LIMIT = 20;
+
+    /**
+     * 我的栏目
+     */
+    String CATEGORY_MY = "MY";
+    /**
+     * 默认栏目
+     */
+    String CATEGORY_DEFUALT = "DF";
 }

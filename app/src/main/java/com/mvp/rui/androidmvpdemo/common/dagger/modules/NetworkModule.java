@@ -26,7 +26,7 @@ public final class NetworkModule {
 
     @Provides
     @Singleton
-    public static HttpLoggingInterceptor providesHttpLoggingInterceptor() {
+    static HttpLoggingInterceptor providesHttpLoggingInterceptor() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         if (BuildConfig.DEBUG) {
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -38,8 +38,8 @@ public final class NetworkModule {
 
     @Provides
     @Singleton
-    public static OkHttpClient provideOkHttpClient(PropertiesManager propertiesManager, HttpLoggingInterceptor httpLoggingInterceptor,
-                                                   BaseUrlInterceptor baseUrlInterceptor) {
+    static OkHttpClient provideOkHttpClient(PropertiesManager propertiesManager, HttpLoggingInterceptor httpLoggingInterceptor,
+                                            BaseUrlInterceptor baseUrlInterceptor) {
 
         final OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
 
@@ -57,7 +57,7 @@ public final class NetworkModule {
 
     @Provides
     @Singleton
-    public static Retrofit providesRetrofit(OkHttpClient okHttpClient, PropertiesManager propertiesManager) {
+    static Retrofit providesRetrofit(OkHttpClient okHttpClient, PropertiesManager propertiesManager) {
 
         return new Retrofit.Builder()
                 .baseUrl(propertiesManager.getBaseUrl())
@@ -71,7 +71,7 @@ public final class NetworkModule {
     @Provides
     @Singleton
 //    @ForTestingPurposes
-    public static BaseUrlInterceptor providesBaseUrlInterceptor(PropertiesManager propertiesManager) {
+    static BaseUrlInterceptor providesBaseUrlInterceptor(PropertiesManager propertiesManager) {
         return new BaseUrlInterceptor(propertiesManager.getBaseUrl());
     }
 

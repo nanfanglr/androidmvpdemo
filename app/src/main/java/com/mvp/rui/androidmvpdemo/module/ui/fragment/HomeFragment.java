@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.common.fragment.BaseLazyFragment;
 import com.mvp.rui.androidmvpdemo.module.di.contract.HomeFgView;
+import com.mvp.rui.androidmvpdemo.module.model.InfoCategory;
+import com.mvp.rui.androidmvpdemo.module.model.InfomationVModel;
 import com.mvp.rui.androidmvpdemo.module.presenter.HomeFgPresenter;
 import com.mvp.rui.androidmvpdemo.module.ui.adapter.FgPagerAdapter;
 import com.mvp.rui.androidmvpdemo.module.viewstate.HomeFgViewState;
@@ -44,16 +47,16 @@ public class HomeFragment extends BaseLazyFragment<
     @BindView(R.id.ll_head)
     LinearLayout llHead;
 
-    private List<Fragment> mList;
+    private List<Fragment> fragmentList;
     private Fragment currentFragment;
     private FgPagerAdapter fgPagerAdapter;
     private boolean isCategorychange;
-    public List<String> mSelectedDatas;
-    private String[] titles = {"推荐", "图片", "报价", "科技", "体育"};
+    //    public List<String> selectedDatas;
+//    private String[] titles = {"推荐", "图片", "报价", "科技", "体育", "热点", "两会", "中国"};
 
-//    public List<InfoCategory> mSelectedDatas;
-//    public List<InfoCategory> mUnSelectedDatas;
-//    public List<InfoCategory> allDatas;
+    public List<InfoCategory> selectedDatas;
+    public List<InfoCategory> unSelectedDatas;
+    public List<InfoCategory> allDatas;
 
     public static HomeFragment newInstance(Context context) {
         Bundle bundle = new Bundle();
@@ -67,7 +70,54 @@ public class HomeFragment extends BaseLazyFragment<
 
     @Override
     protected void lazyFetchData() {
+        getPresenter().getCategory(null);
+    }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initViews();
+    }
+
+    private void initViews() {
+        fragmentList = new ArrayList<>();
+        selectedDatas = new ArrayList<>();
+        unSelectedDatas = new ArrayList<>();
+        allDatas = new ArrayList<>();
+
+        fgPagerAdapter = new FgPagerAdapter(childFragmentManager, fragmentList, selectedDatas);
+        vpContainer.setAdapter(fgPagerAdapter);
+
+        tlInfo.setupWithViewPager(vpContainer);
+
+    }
+
+    @Override
+    public void onCategoryLoad(InfomationVModel model) {
+        fragmentList.clear();
+        selectedDatas.clear();
+        unSelectedDatas.clear();
+
+        fragmentList.addAll(model.getFragmentList());
+        selectedDatas.addAll(model.getSelectedDatas());
+        unSelectedDatas.addAll(model.getUnSelectedDatas());
+
+        allDatas.addAll(selectedDatas);
+        allDatas.addAll(unSelectedDatas);
+        fgPagerAdapter.notifyDataSetChanged();
+        vpContainer.setOffscreenPageLimit(selectedDatas.size());
+        vpContainer.setCurrentItem(0);
+        tlInfo.post(() -> {
+            ViewGroup slidingTabStrip = (ViewGroup) tlInfo.getChildAt(0); //设置最小宽度，使其可以在滑动一部分距离
+            if (true) {
+                slidingTabStrip.setMinimumWidth(slidingTabStrip.getMeasuredWidth() + ivAdd.getMeasuredWidth());
+            } else {
+                //注意：因为最开始设置了最小宽度，所以重新测量宽度的时候一定要先将最小宽度设置为0
+                slidingTabStrip.setMinimumWidth(0);
+                slidingTabStrip.measure(0, 0);
+                slidingTabStrip.setMinimumWidth(slidingTabStrip.getMeasuredWidth() + ivAdd.getMeasuredWidth());
+            }
+        });
     }
 
     @Override
@@ -84,83 +134,4 @@ public class HomeFragment extends BaseLazyFragment<
     public void showLoadingFailureError() {
 
     }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initViews();
-    }
-
-    private void initViews() {
-        mList = new ArrayList<>();
-        mSelectedDatas = new ArrayList<>();
-        for (String str : titles) {
-            mSelectedDatas.add(str);
-            mList.add(HomeChildFragment.newInstance(getActivity(), 0, str));
-        }
-//        mUnSelectedDatas = new ArrayList<>();
-//        allDatas = new ArrayList<>();
-
-        fgPagerAdapter = new FgPagerAdapter(childFragmentManager, mList, mSelectedDatas);
-        vpContainer.setAdapter(fgPagerAdapter);
-
-        tlInfo.setupWithViewPager(vpContainer);
-//        tlInfo.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                if (tab.getText() != null) {
-//                    //选中TAB字体加粗
-//                    String str = tab.getText().toString();
-//                    CharSequence items = Html.fromHtml("<b>" + str + "</b>");//加粗
-//                    //CharSequence items = Html.fromHtml("<big>" + str + "</big>");//变大
-//                    tab.setText(items);
-//                }
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//                if (tab.getText() != null) {
-//                    //非选中TAB字体恢复原样
-//                    String str = tab.getText().toString();
-//                    CharSequence items = Html.fromHtml("<font color=\"#989898\">" + str + "</font>");
-//                    tab.setText(items);
-//                }
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//            }
-//        });
-//
-//        vpContainer.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                JZVideoPlayer.releaseAllVideos();//停止列表视频播放
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
-//
-//        headBar.SetIvRightOnclickerListener(v -> {
-//            // TODO: 2017/9/13 搜索相关页面
-//            IDataViewService serviceInterface = new DataViewProxy().getServiceInterface();
-//            if (serviceInterface != null) {
-//                serviceInterface.startSearchIndexActivity(mContext);
-//            }
-//        });
-//        headBar.SetBtnLeftOnclickerListener(v -> EventBus.getDefault().post(new BaseEvents.LeftMineShowEvent()));
-//
-//        //tvTitle在一个视图树中的焦点状态发生改变时，注册回调接口来获取标题栏的高度
-//        ViewTreeObserver vto = llHead.getViewTreeObserver();
-//        vto.addOnGlobalLayoutListener(this);
-    }
-
 }
