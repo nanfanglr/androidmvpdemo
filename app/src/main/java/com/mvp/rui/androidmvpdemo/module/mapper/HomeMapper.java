@@ -32,7 +32,7 @@ public class HomeMapper implements Mapper<List<InfoCategory>, InfomationVModel> 
         List<InfoCategory> unSelectedDatas = new ArrayList<>();
 
         for (InfoCategory model : categorys) {
-            if (TextUtils.equals(model.getTypeGroup(), APPValue.CATEGORY_MY)) {
+            if (TextUtils.equals(model.getTypeGroup(), APPValue.CATEGORY_DEFUALT)) {
                 selectedDatas.add(model);
                 mList.add(HomeChildFragment.newInstance(context, 0, model.getTitle()));
             } else if (TextUtils.equals(model.getTypeGroup(), APPValue.CATEGORY_DEFUALT)) {

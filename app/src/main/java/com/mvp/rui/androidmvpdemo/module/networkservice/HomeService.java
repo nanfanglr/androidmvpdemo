@@ -16,7 +16,7 @@ public interface HomeService {
      *
      * @return
      */
-    @GET("/v1/info/mycategorys")
+    @GET("/ssmdemo/category/list")
     Single<ResultModel<List<InfoCategory>>> getCategorys(
             @Query("token") String token
     );
