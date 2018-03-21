@@ -16,6 +16,7 @@
 
 package com.mvp.rui.androidmvpdemo.common.dagger.modules;
 
+
 import android.app.Fragment;
 
 import dagger.Module;

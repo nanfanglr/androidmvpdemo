@@ -3,7 +3,7 @@ package com.mvp.rui.androidmvpdemo.common.network.basemodel;
 import java.io.Serializable;
 
 /**
- * Created by linet on 16/1/25.
+ * Created by rui on 2018/3/9.
  */
 public class BaseModel implements Serializable {
 

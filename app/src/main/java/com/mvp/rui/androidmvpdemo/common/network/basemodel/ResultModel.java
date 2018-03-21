@@ -1,9 +1,8 @@
 package com.mvp.rui.androidmvpdemo.common.network.basemodel;
 
 /**
- * Created by linet on 16/9/22.
+ * Created by rui on 2018/3/9.
  */
-
 public class ResultModel<T> extends BaseResultModel {
 
     protected T data;

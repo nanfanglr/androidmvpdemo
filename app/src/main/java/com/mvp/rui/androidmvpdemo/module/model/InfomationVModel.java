@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * Created by rui on 2018/3/13.
  */
-
 public class InfomationVModel {
 
     private List<Fragment> fragmentList;

@@ -5,9 +5,8 @@ import android.support.annotation.UiThread;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
- * Created by 0200030 on 2017/9/16.
+ * Created by rui on 2018/3/9.
  */
-
 public interface LoadMvpView extends MvpView {
 
     @UiThread

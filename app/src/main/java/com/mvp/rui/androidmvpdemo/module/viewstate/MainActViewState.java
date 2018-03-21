@@ -8,7 +8,6 @@ import javax.inject.Inject;
 /**
  * Created by rui on 2018/3/9.
  */
-
 public class MainActViewState implements ViewState<MainActView> {
 
     @Inject

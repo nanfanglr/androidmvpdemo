@@ -7,6 +7,9 @@ import com.mvp.rui.androidmvpdemo.module.ui.MainActivity;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
+/**
+ * Created by rui on 2018/3/9.
+ */
 @Module
 public abstract class ActivityBindingModule {
     /**

@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import timber.log.Timber;
 
 /**
+ * Created by rui on 2018/3/9.
  * Class works as our image loading library wrapper. Allows for easier testing and replacement of the image loading library.
  */
 public class ImageLoader {

@@ -2,19 +2,20 @@ package com.mvp.rui.androidmvpdemo.module.ui.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 import com.mvp.rui.androidmvpdemo.module.model.InfoCategory;
 
 import java.util.List;
 
 /**
- * Created by 0200030 on 2018/3/13.
+ * Created by rui on 2018/3/13.
  */
-public class FgPagerAdapter extends FragmentPagerAdapter {
+public class FgPagerAdapter extends FragmentStatePagerAdapter {
 
     private List<Fragment> list;
-        private List<InfoCategory> selectedDatas;
+    private List<InfoCategory> selectedDatas;
 //    private List<String> selectedDatas;
 
     public FgPagerAdapter(FragmentManager fm
@@ -23,6 +24,11 @@ public class FgPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         this.list = list;
         this.selectedDatas = selectedData;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+
     }
 
     @Override

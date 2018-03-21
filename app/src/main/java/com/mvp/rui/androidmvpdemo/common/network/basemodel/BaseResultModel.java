@@ -1,11 +1,9 @@
 package com.mvp.rui.androidmvpdemo.common.network.basemodel;
 
 import android.text.TextUtils;
-
 /**
- * Created by linet on 16/9/30.
+ * Created by rui on 2018/3/9.
  */
-
 public class BaseResultModel extends BaseModel {
 
     public static int PAGE_LIMIT = 20;

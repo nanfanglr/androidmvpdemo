@@ -9,6 +9,9 @@ import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+/**
+ * Created by rui on 2018/3/9.
+ */
 public interface HomeService {
 
     /**

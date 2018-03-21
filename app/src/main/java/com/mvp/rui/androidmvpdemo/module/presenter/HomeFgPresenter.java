@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by 0200030 on 2018/3/9.
+ * Created by rui on 2018/3/9.
  */
 public class HomeFgPresenter extends BasePresenter<HomeFgView> {
 

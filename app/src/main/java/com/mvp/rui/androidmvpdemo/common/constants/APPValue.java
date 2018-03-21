@@ -1,9 +1,8 @@
 package com.mvp.rui.androidmvpdemo.common.constants;
 
 /**
- * Created by 0200030 on 2017/9/24.
+ * Created by rui on 2018/3/9.
  */
-
 public interface APPValue {
     String FRAGMENT_HOME = "home";
     String FRAGMENT_OFFER = "offer";

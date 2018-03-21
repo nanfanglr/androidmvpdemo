@@ -28,6 +28,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 
 /**
+ * Created by rui on 2018/2/10
  * 2018.2.10 上传GitHub测试
  */
 public class MainActivity extends BaseActivity<

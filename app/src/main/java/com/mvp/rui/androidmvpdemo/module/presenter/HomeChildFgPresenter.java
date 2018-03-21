@@ -6,7 +6,7 @@ import com.mvp.rui.androidmvpdemo.module.di.contract.HomeChildFgView;
 import javax.inject.Inject;
 
 /**
- * Created by 0200030 on 2018/3/9.
+ * Created by rui on 2018/3/9.
  */
 public class HomeChildFgPresenter extends BasePresenter<HomeChildFgView> {
 
