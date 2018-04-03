@@ -10,9 +10,9 @@ import com.mvp.rui.androidmvpdemo.common.dagger.scopes.PerFragment;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
 import com.mvp.rui.androidmvpdemo.example.TestInnerImpl;
-import com.mvp.rui.androidmvpdemo.module.ui.MainActivity;
+import com.mvp.rui.androidmvpdemo.module.ui.MainVSActivity;
 import com.mvp.rui.androidmvpdemo.module.ui.fragment.ConnectionFragment;
-import com.mvp.rui.androidmvpdemo.module.ui.fragment.HomeFragment;
+import com.mvp.rui.androidmvpdemo.module.ui.fragment.HomeVSFragment;
 import com.mvp.rui.androidmvpdemo.module.ui.fragment.MallFragment;
 import com.mvp.rui.androidmvpdemo.module.ui.fragment.OfferFragment;
 
@@ -22,18 +22,18 @@ import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 
 /**
- * 负责提供MainActivity所需要的依赖
+ * 负责提供MainVSActivity所需要的依赖
  */
 @Module(includes = BaseActivityModule.class)
-public abstract class MainActModule {
+public abstract class MainActVSModule {
 
     /**
      * Provides the injector for the {@link HomeVSFgModule}, which has access to the dependencies
      * provided by this activity and application instance (singleton scoped objects).
      */
     @PerFragment
-    @ContributesAndroidInjector(modules = HomeFgModule.class)
-    abstract HomeFragment homeFragmentInjector();
+    @ContributesAndroidInjector(modules = HomeVSFgModule.class)
+    abstract HomeVSFragment homeVSFragmentInjector();
 
     @PerFragment
     @ContributesAndroidInjector
@@ -60,7 +60,7 @@ public abstract class MainActModule {
      */
     @Binds
     @ActivityScope
-    abstract FragmentActivity activity(MainActivity activity);
+    abstract FragmentActivity activity(MainVSActivity activity);
 
     /**
      * 通过接口来接收类的写法，必须在实现类的构造方法上加上@inject；

@@ -11,28 +11,30 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
-import com.mvp.rui.androidmvpdemo.common.activity.BaseActivity;
+import com.mvp.rui.androidmvpdemo.common.activity.BaseVSActivity;
 import com.mvp.rui.androidmvpdemo.common.constants.APPValue;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
 import com.mvp.rui.androidmvpdemo.module.di.contract.MainActView;
 import com.mvp.rui.androidmvpdemo.module.presenter.MainActPresenter;
 import com.mvp.rui.androidmvpdemo.module.ui.fragment.ConnectionFragment;
-import com.mvp.rui.androidmvpdemo.module.ui.fragment.HomeFragment;
+import com.mvp.rui.androidmvpdemo.module.ui.fragment.HomeVSFragment;
 import com.mvp.rui.androidmvpdemo.module.ui.fragment.MallFragment;
 import com.mvp.rui.androidmvpdemo.module.ui.fragment.OfferFragment;
+import com.mvp.rui.androidmvpdemo.module.viewstate.MainActViewState;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 
 /**
- * Created by rui on 2018/4/3
+ * Created by rui on 2018/2/10
  * 2018.2.10 上传GitHub测试
  */
-public class MainActivity extends BaseActivity<
+public class MainVSActivity extends BaseVSActivity<
         MainActView
-        , MainActPresenter>
+        , MainActPresenter
+        , MainActViewState>
         implements
         MainActView
         , RadioGroup.OnCheckedChangeListener {
@@ -103,7 +105,7 @@ public class MainActivity extends BaseActivity<
         } else {
             if (TextUtils.equals(fragmentTag, APPValue.FRAGMENT_HOME)) {
                 //加载首页
-                fragment = HomeFragment.newInstance(this);
+                fragment = HomeVSFragment.newInstance(this);
             } else if (TextUtils.equals(fragmentTag, APPValue.FRAGMENT_OFFER)) {
                 //加载报价
                 fragment = OfferFragment.newInstance(this);

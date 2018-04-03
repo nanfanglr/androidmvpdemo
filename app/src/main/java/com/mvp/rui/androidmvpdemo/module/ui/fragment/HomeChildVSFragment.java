@@ -9,18 +9,20 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
-import com.mvp.rui.androidmvpdemo.common.fragment.BaseLazyFragment;
+import com.mvp.rui.androidmvpdemo.common.fragment.BaseLazyVSFragment;
 import com.mvp.rui.androidmvpdemo.module.di.contract.HomeChildFgView;
 import com.mvp.rui.androidmvpdemo.module.presenter.HomeChildFgPresenter;
+import com.mvp.rui.androidmvpdemo.module.viewstate.HomeChildFgViewState;
 
 import butterknife.BindView;
 
 /**
  * Created by rui on 2018/3/12.
  */
-public class HomeChildFragment extends BaseLazyFragment<
+public class HomeChildVSFragment extends BaseLazyVSFragment<
         HomeChildFgView
         , HomeChildFgPresenter
+        , HomeChildFgViewState
         > implements
         HomeChildFgView {
 
@@ -32,15 +34,15 @@ public class HomeChildFragment extends BaseLazyFragment<
     protected int fragmentId;
     protected String fragmentTitle;
 
-    public static HomeChildFragment newInstance(
+    public static HomeChildVSFragment newInstance(
             Context context
             , int fragmentId
             , String fragmentTitle) {
         Bundle bundle = new Bundle();
         bundle.putInt("id", fragmentId);
         bundle.putString("title", fragmentTitle);
-        return (HomeChildFragment) Fragment.instantiate(context
-                , HomeChildFragment.class.getName(), bundle);
+        return (HomeChildVSFragment) Fragment.instantiate(context
+                , HomeChildVSFragment.class.getName(), bundle);
     }
 
     @Override

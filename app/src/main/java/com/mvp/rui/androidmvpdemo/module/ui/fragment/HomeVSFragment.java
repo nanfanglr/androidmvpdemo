@@ -13,12 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
-import com.mvp.rui.androidmvpdemo.common.fragment.BaseLazyFragment;
+import com.mvp.rui.androidmvpdemo.common.fragment.BaseLazyVSFragment;
 import com.mvp.rui.androidmvpdemo.module.di.contract.HomeFgView;
 import com.mvp.rui.androidmvpdemo.module.model.InfoCategory;
 import com.mvp.rui.androidmvpdemo.module.model.InfomationVModel;
-import com.mvp.rui.androidmvpdemo.module.presenter.HomeFgPresenter;
+import com.mvp.rui.androidmvpdemo.module.presenter.HomeVSFgPresenter;
 import com.mvp.rui.androidmvpdemo.module.ui.adapter.FgPagerAdapter;
+import com.mvp.rui.androidmvpdemo.module.viewstate.HomeFgViewState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +29,10 @@ import butterknife.BindView;
 /**
  * Created by rui on 2018/3/12.
  */
-public class HomeFragment extends BaseLazyFragment<
-        HomeFgView
-        , HomeFgPresenter
+public class HomeVSFragment extends BaseLazyVSFragment<
+        HomeFgView,
+        HomeVSFgPresenter,
+        HomeFgViewState
         > implements
         HomeFgView {
 
@@ -56,9 +58,9 @@ public class HomeFragment extends BaseLazyFragment<
     public List<InfoCategory> unSelectedDatas;
     public List<InfoCategory> allDatas;
 
-    public static HomeFragment newInstance(Context context) {
+    public static HomeVSFragment newInstance(Context context) {
         Bundle bundle = new Bundle();
-        return (HomeFragment) Fragment.instantiate(context, HomeFragment.class.getName(), bundle);
+        return (HomeVSFragment) Fragment.instantiate(context, HomeVSFragment.class.getName(), bundle);
     }
 
     @Override
