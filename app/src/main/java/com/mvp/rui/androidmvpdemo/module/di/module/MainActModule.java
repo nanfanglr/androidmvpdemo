@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import com.mvp.rui.androidmvpdemo.common.activity.BaseVSActivity;
 import com.mvp.rui.androidmvpdemo.common.dagger.modules.BaseActivityModule;
 import com.mvp.rui.androidmvpdemo.common.dagger.scopes.ActivityScope;
-import com.mvp.rui.androidmvpdemo.common.dagger.scopes.PerFragment;
+import com.mvp.rui.androidmvpdemo.common.dagger.scopes.FragmentScope;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
 import com.mvp.rui.androidmvpdemo.example.TestInnerImpl;
@@ -31,19 +31,19 @@ public abstract class MainActModule {
      * Provides the injector for the {@link HomeVSFgModule}, which has access to the dependencies
      * provided by this activity and application instance (singleton scoped objects).
      */
-    @PerFragment
+    @FragmentScope
     @ContributesAndroidInjector(modules = HomeFgModule.class)
     abstract HomeFragment homeFragmentInjector();
 
-    @PerFragment
+    @FragmentScope
     @ContributesAndroidInjector
     abstract OfferFragment offerFragmentInjector();
 
-    @PerFragment
+    @FragmentScope
     @ContributesAndroidInjector
     abstract MallFragment mallFragmentInjector();
 
-    @PerFragment
+    @FragmentScope
     @ContributesAndroidInjector
     abstract ConnectionFragment connectionFragmentInjector();
 

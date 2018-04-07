@@ -4,7 +4,7 @@ package com.mvp.rui.androidmvpdemo.module.di.module;
 import android.support.v4.app.Fragment;
 
 import com.mvp.rui.androidmvpdemo.common.dagger.modules.BaseChildFragmentModule;
-import com.mvp.rui.androidmvpdemo.common.dagger.scopes.PerChildFragment;
+import com.mvp.rui.androidmvpdemo.common.dagger.scopes.ChildFragmentScope;
 import com.mvp.rui.androidmvpdemo.module.ui.fragment.HomeChildFragment;
 
 import javax.inject.Named;
@@ -28,7 +28,7 @@ public abstract class HomeChildFgModule {
      */
     @Binds
     @Named(BaseChildFragmentModule.CHILD_FRAGMENT)
-    @PerChildFragment
+    @ChildFragmentScope
     abstract Fragment fragment(HomeChildFragment homeChildFragment);
 
 

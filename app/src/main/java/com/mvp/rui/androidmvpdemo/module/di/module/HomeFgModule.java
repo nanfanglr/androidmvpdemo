@@ -5,8 +5,8 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.mvp.rui.androidmvpdemo.common.dagger.modules.BaseFragmentModule;
-import com.mvp.rui.androidmvpdemo.common.dagger.scopes.PerChildFragment;
-import com.mvp.rui.androidmvpdemo.common.dagger.scopes.PerFragment;
+import com.mvp.rui.androidmvpdemo.common.dagger.scopes.ChildFragmentScope;
+import com.mvp.rui.androidmvpdemo.common.dagger.scopes.FragmentScope;
 import com.mvp.rui.androidmvpdemo.module.mapper.HomeMapper;
 import com.mvp.rui.androidmvpdemo.module.networkservice.HomeService;
 import com.mvp.rui.androidmvpdemo.module.ui.fragment.HomeChildFragment;
@@ -29,7 +29,7 @@ public abstract class HomeFgModule {
 
     @Binds
     @Named(BaseFragmentModule.FRAGMENT)
-    @PerFragment
+    @FragmentScope
     abstract Fragment fragment(HomeFragment homeFragment);
 
     /**
@@ -37,7 +37,7 @@ public abstract class HomeFgModule {
      * dependencies provided by this fragment and activity and application instance
      * (singleton scoped objects).
      */
-    @PerChildFragment
+    @ChildFragmentScope
     @ContributesAndroidInjector(modules = HomeChildFgModule.class)
     abstract HomeChildFragment homeChildFragmentInjector();
 

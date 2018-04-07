@@ -36,5 +36,5 @@ import javax.inject.Scope;
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PerChildFragment {
+public @interface ChildFragmentScope {
 }

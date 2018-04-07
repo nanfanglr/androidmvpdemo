@@ -20,7 +20,7 @@ package com.mvp.rui.androidmvpdemo.common.dagger.modules;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.mvp.rui.androidmvpdemo.common.dagger.scopes.PerFragment;
+import com.mvp.rui.androidmvpdemo.common.dagger.scopes.FragmentScope;
 
 import javax.inject.Named;
 
@@ -43,7 +43,7 @@ public abstract class BaseFragmentModule {
 
     @Provides
     @Named(CHILD_FRAGMENT_MANAGER)
-    @PerFragment
+    @FragmentScope
     static FragmentManager childFragmentManager(@Named(FRAGMENT) Fragment fragment) {
         return fragment.getChildFragmentManager();
     }
