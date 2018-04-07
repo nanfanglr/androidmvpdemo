@@ -49,7 +49,7 @@ public abstract class BaseActivity<
 
     // Delegate propagation ****************************************************************************************************************
 
-    private ActivityMvpDelegate<VIEW, PRESENTER> getMvpDelegate() {
+    protected ActivityMvpDelegate<VIEW, PRESENTER> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new ActivityMvpDelegateImpl<>(this, this, true);
         }

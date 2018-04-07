@@ -1,7 +1,6 @@
 package com.mvp.rui.androidmvpdemo.common.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
@@ -23,16 +22,16 @@ public abstract class BaseVSActivity<
         VIEW extends MvpView,
         PRESENTER extends MvpPresenter<VIEW>,
         VIEW_STATE extends ViewState<VIEW>>
-        extends BaseAppCompatActivity
+        extends BaseActivity<VIEW, PRESENTER>
         implements
         MvpViewStateDelegateCallback<VIEW, PRESENTER, VIEW_STATE> {
 
     /**
      * Can't inject directly, as the presenter instantiation needs to happen by mosby in {@link this#createPresenter()}.
      */
-    @Inject
-    Provider<PRESENTER> presenterProvider;
-    private PRESENTER presenter;
+//    @Inject
+//    Provider<PRESENTER> presenterProvider;
+//    private PRESENTER presenter;
 
     /**
      * Can't inject directly, as the presenter instantiation needs to happen by mosby in {@link this#createViewState()}.
@@ -57,90 +56,90 @@ public abstract class BaseVSActivity<
     }
 
     // Delegate propagation ****************************************************************************************************************
-
-    private ActivityMvpDelegate<VIEW, PRESENTER> getMvpDelegate() {
+    @Override
+    protected ActivityMvpDelegate<VIEW, PRESENTER> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new ActivityMvpViewStateDelegateImpl<>(this, this, true);
         }
         return mvpDelegate;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        getMvpDelegate().onDestroy();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        getMvpDelegate().onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        getMvpDelegate().onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getMvpDelegate().onResume();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        getMvpDelegate().onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        getMvpDelegate().onStop();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        getMvpDelegate().onRestart();
-    }
-
-    @Override
-    public void onContentChanged() {
-        super.onContentChanged();
-        getMvpDelegate().onContentChanged();
-    }
-
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        getMvpDelegate().onPostCreate(savedInstanceState);
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        getMvpDelegate().onDestroy();
+//    }
+//
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        getMvpDelegate().onSaveInstanceState(outState);
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        getMvpDelegate().onPause();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        getMvpDelegate().onResume();
+//    }
+//
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        getMvpDelegate().onStart();
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        getMvpDelegate().onStop();
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        getMvpDelegate().onRestart();
+//    }
+//
+//    @Override
+//    public void onContentChanged() {
+//        super.onContentChanged();
+//        getMvpDelegate().onContentChanged();
+//    }
+//
+//    @Override
+//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+//        super.onPostCreate(savedInstanceState);
+//        getMvpDelegate().onPostCreate(savedInstanceState);
+//    }
 
     // MVP related *************************************************************************************************************************
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public VIEW getMvpView() {
-        return (VIEW) this;
-    }
-
-    @Override
-    public PRESENTER createPresenter() {
-        return presenterProvider.get();
-    }
-
-    @Override
-    public PRESENTER getPresenter() {
-        return presenter;
-    }
-
-    @Override
-    public void setPresenter(PRESENTER presenter) {
-        this.presenter = presenter;
-    }
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public VIEW getMvpView() {
+//        return (VIEW) this;
+//    }
+//
+//    @Override
+//    public PRESENTER createPresenter() {
+//        return presenterProvider.get();
+//    }
+//
+//    @Override
+//    public PRESENTER getPresenter() {
+//        return presenter;
+//    }
+//
+//    @Override
+//    public void setPresenter(PRESENTER presenter) {
+//        this.presenter = presenter;
+//    }
 
     // View state related ******************************************************************************************************************
 
@@ -190,8 +189,8 @@ public abstract class BaseVSActivity<
         // Default implementation not doing anything. Override when required.
     }
 
-    public void backClick(View v) {
-        finish();
-    }
+//    public void backClick(View v) {
+//        finish();
+//    }
 
 }

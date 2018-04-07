@@ -1,6 +1,7 @@
 package com.mvp.rui.androidmvpdemo.common.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -42,7 +43,7 @@ public abstract class BaseLazyFragment<
 
     protected FragmentMvpDelegate<VIEW, PRESENTER> mvpDelegate;
 
-    //    @Override
+    //        @Override
     protected FragmentMvpDelegate<VIEW, PRESENTER> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new FragmentMvpDelegateImpl<>(this, this
@@ -70,7 +71,7 @@ public abstract class BaseLazyFragment<
 //        unbinder = ButterKnife.bind(this, view);
         getMvpDelegate().onViewCreated(view, savedInstanceState);
         isViewPrepared = true;
-        lazyFetchDataIfPrepared();
+
     }
 
     @Override
@@ -116,6 +117,7 @@ public abstract class BaseLazyFragment<
     public void onStart() {
         super.onStart();
         getMvpDelegate().onStart();
+        lazyFetchDataIfPrepared();
     }
 
     @Override
@@ -138,18 +140,19 @@ public abstract class BaseLazyFragment<
 //            // is not yet available at L.
 //            AndroidSupportInjection.inject(this);
 //        }
-        getMvpDelegate().onAttach(activity);
         super.onAttach(activity);
+        getMvpDelegate().onAttach(activity);
     }
 
-//    @Override
-//    public void onAttach(Context context) {
+    @Override
+    public void onAttach(Context context) {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //            // Perform injection here for M (API 23) due to deprecation of onAttach(Activity).
 //            AndroidSupportInjection.inject(this);
 //        }
-//        super.onAttach(context);
-//    }
+        super.onAttach(context);
+
+    }
 
     @Override
     public void onDetach() {
