@@ -27,13 +27,6 @@ public abstract class BaseVSActivity<
         MvpViewStateDelegateCallback<VIEW, PRESENTER, VIEW_STATE> {
 
     /**
-     * Can't inject directly, as the presenter instantiation needs to happen by mosby in {@link this#createPresenter()}.
-     */
-//    @Inject
-//    Provider<PRESENTER> presenterProvider;
-//    private PRESENTER presenter;
-
-    /**
      * Can't inject directly, as the presenter instantiation needs to happen by mosby in {@link this#createViewState()}.
      */
     @Inject
@@ -63,83 +56,6 @@ public abstract class BaseVSActivity<
         }
         return mvpDelegate;
     }
-
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        getMvpDelegate().onDestroy();
-//    }
-//
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        getMvpDelegate().onSaveInstanceState(outState);
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        getMvpDelegate().onPause();
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        getMvpDelegate().onResume();
-//    }
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        getMvpDelegate().onStart();
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        getMvpDelegate().onStop();
-//    }
-//
-//    @Override
-//    protected void onRestart() {
-//        super.onRestart();
-//        getMvpDelegate().onRestart();
-//    }
-//
-//    @Override
-//    public void onContentChanged() {
-//        super.onContentChanged();
-//        getMvpDelegate().onContentChanged();
-//    }
-//
-//    @Override
-//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        getMvpDelegate().onPostCreate(savedInstanceState);
-//    }
-
-    // MVP related *************************************************************************************************************************
-
-//    @Override
-//    @SuppressWarnings("unchecked")
-//    public VIEW getMvpView() {
-//        return (VIEW) this;
-//    }
-//
-//    @Override
-//    public PRESENTER createPresenter() {
-//        return presenterProvider.get();
-//    }
-//
-//    @Override
-//    public PRESENTER getPresenter() {
-//        return presenter;
-//    }
-//
-//    @Override
-//    public void setPresenter(PRESENTER presenter) {
-//        this.presenter = presenter;
-//    }
 
     // View state related ******************************************************************************************************************
 
@@ -188,9 +104,5 @@ public abstract class BaseVSActivity<
     protected void onFirstCreate() {
         // Default implementation not doing anything. Override when required.
     }
-
-//    public void backClick(View v) {
-//        finish();
-//    }
 
 }

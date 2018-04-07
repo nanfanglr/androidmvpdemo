@@ -26,8 +26,6 @@ public abstract class BaseLazyFragment<
         extends BaseDaggerFragment
         implements MvpDelegateCallback<VIEW, PRESENTER>, LoadMvpView {
 
-    //    protected View rootView;
-//    protected Unbinder unbinder;
     protected boolean isViewPrepared; // 标识fragment视图已经初始化完毕
     protected boolean hasFetchData; // 标识已经触发过懒加载数据
 
@@ -52,19 +50,6 @@ public abstract class BaseLazyFragment<
         return mvpDelegate;
     }
 
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        if (rootView == null) {
-//            rootView = inflater.inflate(getLayout(), container, false);
-//        }
-//        ViewGroup parent = (ViewGroup) rootView.getParent();
-//        if (parent != null) {
-//            parent.removeView(rootView);
-//        }
-//        return rootView;
-//    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -78,12 +63,11 @@ public abstract class BaseLazyFragment<
     public void onDestroyView() {
         super.onDestroyView();
         getMvpDelegate().onDestroyView();
-//        KL.d(this.getClass(), getName() + "------>onDestroyView");
-        // view被销毁后，将可以重新触发数据懒加载，因为在viewpager下，fragment不会再次新建并走onCreate的生命周期流程，将从onCreateView开始
+        // view被销毁后，将可以重新触发数据懒加载，因为在viewpager下，
+        // fragment不会再次新建并走onCreate的生命周期流程，将从onCreateView开始
         hasFetchData = false;
         isViewPrepared = false;
-//        if (unbinder != null)
-//            unbinder.unbind();
+
     }
 
     @Override
@@ -97,8 +81,6 @@ public abstract class BaseLazyFragment<
     public void onDestroy() {
         super.onDestroy();
         getMvpDelegate().onDestroy();
-//        if (unbinder != null)
-//            unbinder.unbind();
     }
 
     @Override
@@ -135,23 +117,13 @@ public abstract class BaseLazyFragment<
     @SuppressWarnings("deprecation")
     @Override
     public void onAttach(Activity activity) {
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-//            // Perform injection here before M, L (API 22) and below because onAttach(Context)
-//            // is not yet available at L.
-//            AndroidSupportInjection.inject(this);
-//        }
         super.onAttach(activity);
         getMvpDelegate().onAttach(activity);
     }
 
     @Override
     public void onAttach(Context context) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            // Perform injection here for M (API 23) due to deprecation of onAttach(Activity).
-//            AndroidSupportInjection.inject(this);
-//        }
         super.onAttach(context);
-
     }
 
     @Override

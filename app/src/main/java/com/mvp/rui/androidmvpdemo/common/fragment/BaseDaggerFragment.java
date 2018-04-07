@@ -21,9 +21,6 @@ import dagger.android.support.HasSupportFragmentInjector;
  */
 public abstract class BaseDaggerFragment extends BaseFragment implements HasSupportFragmentInjector {
 
-//    protected View rootView;
-//    protected Unbinder unbinder;
-
     @Inject
     @Named(BaseFragmentModule.CHILD_FRAGMENT_MANAGER)
     protected FragmentManager childFragmentManager;
@@ -31,39 +28,6 @@ public abstract class BaseDaggerFragment extends BaseFragment implements HasSupp
     @Inject
     DispatchingAndroidInjector<Fragment> childFragmentInjector;
 
-
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        if (rootView == null) {
-//            rootView = inflater.inflate(getLayout(), container, false);
-//        }
-//        ViewGroup parent = (ViewGroup) rootView.getParent();
-//        if (parent != null) {
-//            parent.removeView(rootView);
-//        }
-//        return rootView;
-//    }
-
-//    protected abstract int getLayout();
-//
-//    @Override
-//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        unbinder = ButterKnife.bind(this, view);
-//    }
-
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        if (unbinder != null)
-//            unbinder.unbind();
-//    }
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//    }
 
     @SuppressWarnings("deprecation")
     @Override

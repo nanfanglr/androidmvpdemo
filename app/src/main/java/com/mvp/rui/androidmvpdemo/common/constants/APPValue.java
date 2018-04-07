@@ -6,7 +6,7 @@ package com.mvp.rui.androidmvpdemo.common.constants;
 public interface APPValue {
     String FRAGMENT_HOME = "home";
     String FRAGMENT_OFFER = "offer";
-//    String FRAGMENT_INDEX = "index";
+    //    String FRAGMENT_INDEX = "index";
     String FRAGMENT_Mall = "mall";
     String FRAGMENT_CONNECTIONS = "connections";
     String FRAGMENT_LEFT = "left_info";
@@ -16,6 +16,7 @@ public interface APPValue {
      * 我的栏目
      */
     String CATEGORY_MY = "MY";
+
     /**
      * 默认栏目
      */
