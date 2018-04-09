@@ -27,19 +27,17 @@ public abstract class BaseVSActivity<
         MvpViewStateDelegateCallback<VIEW, PRESENTER, VIEW_STATE> {
 
     /**
-     * Can't inject directly, as the presenter instantiation needs to happen by mosby in {@link this#createViewState()}.
-     */
-    @Inject
-    Provider<VIEW_STATE> viewStateProvider;
-    private VIEW_STATE viewState;
-
-    /**
      * Instead of extending {@link MvpActivity} or {@link MvpViewStateActivity} we are using a mosby's delegate. To do that we need to
      * propagate certain activity lifecycle methods to the delegate.
      */
     @Nullable
     protected ActivityMvpDelegate mvpDelegate;
-
+    /**
+     * Can't inject directly, as the presenter instantiation needs to happen by mosby in {@link this#createViewState()}.
+     */
+    @Inject
+    Provider<VIEW_STATE> viewStateProvider;
+    private VIEW_STATE viewState;
     private boolean viewStateRestoreInProgress;
 
     @Override
@@ -60,13 +58,13 @@ public abstract class BaseVSActivity<
     // View state related ******************************************************************************************************************
 
     @Override
-    public void setViewState(VIEW_STATE viewState) {
-        this.viewState = viewState;
+    public VIEW_STATE getViewState() {
+        return viewState;
     }
 
     @Override
-    public VIEW_STATE getViewState() {
-        return viewState;
+    public void setViewState(VIEW_STATE viewState) {
+        this.viewState = viewState;
     }
 
     @Override

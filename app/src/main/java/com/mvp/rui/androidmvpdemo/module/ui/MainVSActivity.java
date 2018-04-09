@@ -80,6 +80,7 @@ public class MainVSActivity extends BaseVSActivity<
     //如果是通过本类来接收的，可以直接通过构造来注入
     @Inject
     TestContract.TestInner test2;
+    private Fragment mCurrentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,13 +88,6 @@ public class MainVSActivity extends BaseVSActivity<
         switchMenu(getFragmenTag(R.id.rb_home));
         radioGroup.setOnCheckedChangeListener(this);
     }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
-    }
-
-    private Fragment mCurrentFragment;
 
     private void switchMenu(String fragmentTag) {
 
@@ -127,11 +121,6 @@ public class MainVSActivity extends BaseVSActivity<
         mCurrentFragment = fragment;
     }
 
-    @Override
-    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-        switchMenu(getFragmenTag(checkedId));
-    }
-
     private String getFragmenTag(int menuId) {
         switch (menuId) {
             case R.id.rb_home:
@@ -146,6 +135,16 @@ public class MainVSActivity extends BaseVSActivity<
             default:
                 return "";
         }
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+        switchMenu(getFragmenTag(checkedId));
     }
 
     @Override
