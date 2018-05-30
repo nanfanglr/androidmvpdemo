@@ -120,6 +120,7 @@ public class MainVSActivity extends BaseVSActivity<
         }
         mCurrentFragment = fragment;
         //部分蛛丝
+        //再来一个测试注释
     }
 
     private String getFragmenTag(int menuId) {
