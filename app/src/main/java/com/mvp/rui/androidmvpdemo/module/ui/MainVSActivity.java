@@ -119,9 +119,6 @@ public class MainVSActivity extends BaseVSActivity<
             fragmentManager.beginTransaction().hide(mCurrentFragment).commit();
         }
         mCurrentFragment = fragment;
-        //部分蛛丝
-        //再来一个测试注释
-        //测试账号退出后
     }
 
     private String getFragmenTag(int menuId) {
