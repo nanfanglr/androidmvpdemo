@@ -1,4 +1,4 @@
-package com.rui.android_mvp_with_componentization.ui;
+package com.mvp.rui.androidmvpdemo.ui;
 
 import android.os.Bundle;
 import android.view.View;

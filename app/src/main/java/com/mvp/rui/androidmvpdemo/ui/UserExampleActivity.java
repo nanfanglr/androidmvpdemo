@@ -1,4 +1,4 @@
-package com.rui.android_mvp_with_componentization.ui;
+package com.mvp.rui.androidmvpdemo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,7 +57,7 @@ public class UserExampleActivity extends BaseActivity<
     @Override
     public void onLogin(int id) {
         if (id == R.id.btn_to_user) {
-            startActivity(new Intent(this, com.rui.android_mvp_with_componentization.ui.UserInfoActivity.class));
+            startActivity(new Intent(this, UserInfoActivity.class));
         }
     }
 
@@ -65,7 +65,7 @@ public class UserExampleActivity extends BaseActivity<
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
-                startActivity(new Intent(this, com.rui.android_mvp_with_componentization.ui.LoginActivity.class));
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.btn_to_user:
                 //前往用户信息页面前，先要判断是否登录
