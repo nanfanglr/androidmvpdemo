@@ -1,0 +1,90 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion versions.compileSdkVersion
+    buildToolsVersion versions.buildToolsVersion
+
+
+
+    defaultConfig {
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+
+        }
+    }
+
+    compileOptions {//指定jdk 1.8 默认使用lambda表达式
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    //使用implementation依赖方式，app主模块将不能访问到本模块的所依赖的方法及类
+    //解决:要么使用api依赖方式，要么在主模块添加使用implementation依赖
+    //个人认为基础类库都用api依赖方式
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+//    implementation 'com.android.support:appcompat-v7:25.0.0'
+    api projectDependencies.supportLibsMultiDex
+    // Logging
+    api projectDependencies.timber
+
+    // MVP library
+    api(projectDependencies.mosbyMvp) {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    api(projectDependencies.mosbyViewState) {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    api(projectDependencies.mosbyNullPresenter) {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+
+    // Dagger2
+    api projectDependencies.dagger
+    annotationProcessor projectDependencies.daggerAnnotationProcessor
+    api projectDependencies.daggerAndroid
+    annotationProcessor projectDependencies.daggerAndroidAnnotationProcessor
+
+    //ButterKnife
+    api projectDependencies.butterknife
+    annotationProcessor projectDependencies.butterknifeAnnotationProcessor
+
+    // RetroFit
+    api projectDependencies.retrofit
+    api projectDependencies.retrofitGson
+    api projectDependencies.okhttpLoggingInterceptor
+    api projectDependencies.retrofitRxJava2Adapter
+
+    // RxJava
+    api projectDependencies.rxAndroid
+    api projectDependencies.rxJava2
+
+    //内存泄漏监控
+    debugImplementation(projectDependencies.leakcanary_android) {
+        //编译失败：无法访问：ActivityCompatApi23
+        //解决support包冲突问题，不能编译问题
+        exclude group: 'com.android.support'
+    }
+    releaseImplementation(projectDependencies.leakcanary_android_no_op) {
+        exclude group: 'com.android.support'
+    }
+    // Optional, if you use support library fragments:
+//    debugImplementation projectDependencies.leakcanary_support_fragment:1.6.1'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test:runner:1.0.2')
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

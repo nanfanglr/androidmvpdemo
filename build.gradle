@@ -1,16 +1,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from: 'app/config/gradle/versioning.gradle'
-apply from: 'app/config/gradle/dependencies.gradle'
-
+apply from: 'mvp/config/gradle/versioning.gradle'
+apply from: 'mvp/config/gradle/dependencies.gradle'
 buildscript {
-    
+
     repositories {
         google()
-        jcenter()
+        //        jcenter()//用下面的替换了
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.0'
-        
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,7 +19,8 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        //        jcenter()//用下面的替换了
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     }
 }
 

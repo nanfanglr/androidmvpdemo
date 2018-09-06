@@ -84,6 +84,7 @@ dependencies {
     implementation projectDependencies.supportLibsConstraintLayout
     implementation projectDependencies.supportDesign
 
+    implementation project(':mvp')
     // Logging
     implementation projectDependencies.timber
 
@@ -127,8 +128,9 @@ dependencies {
 
     //测试
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation ('com.android.support.test:runner:1.0.1'){
+    androidTestImplementation('com.android.support.test:runner:1.0.1') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
 }

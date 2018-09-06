@@ -1,0 +1,73 @@
+ext.versions = [
+        // General
+        compileSdkVersion          : 27,
+        buildToolsVersion          : '27.0.3',
+        minSdkVersion              : 15,
+        targetSdkVersion           : 27,
+
+        // Plugins
+        androidPlugin              : '3.0.1',
+        dexCountPlugin             : '0.8.2',
+        playPublisherPlugin        : '1.2.0',
+        fabricPlugin               : '1.22.0',
+        jacocoPlugin               : '0.7.9',
+        apkSizePlugin              : '0.4.0',
+        spoonGradlePlugin          : '1.2.2',
+
+        // Libraries
+        supportLibraries           : '27.0.2',
+        constraintLayout           : '1.0.2',
+        crashlytics                : '2.8.0',
+        answersAnalytics           : '1.3.10',
+        butterknife                : '8.8.1',
+        assertJJava8               : '3.5.2',
+        assertJJava7               : '2.5.0',
+        jUnit                      : '4.12',
+        espresso                   : '3.0.1',
+        espressoTestRules          : '1.0.1',
+        espressoTestRunner         : '1.0.1',
+        timber                     : '4.5.1',
+        mosbyMvp                   : '3.1.0',
+        findbugsAnnotations        : '2.0.1',
+        dagger                     : '2.11',
+        retrofit                   : '2.2.0',
+        rxJava                     : '2.2.0',
+        rxAndroid                  : '2.0.2',
+        loggingInterceptor         : '3.4.2',
+        stetho                     : '1.5.0',
+        robolectric                : '3.6.1',
+        glide                      : '4.0.0',
+        autoValue                  : '1.4',
+        rxLint                     : '1.3',
+        okhttpMockWebServer        : '3.6.0',
+        jodaTime                   : '2.9.9',
+        mockito                    : '2.6.3',
+        cappucinoAnimationDisabling: '0.9.1',
+        chuckNetworkInterceptor    : '1.0.4',
+        traceurRxJavaLogging       : '1.0.1',
+        sherlockLibrary            : '1.0.3',
+        customlint                 : '25.3.1',
+        nullabilityAnnotations     : '3.0.2',
+        appShortcutsLibrary        : '1.0.1',
+        burstTesting               : '1.1.1',
+        lottieAnimations           : '2.3.1',
+        okReplayFakeServerResponses: '1.4.0',
+        multidexLib                : '1.0.1',
+        autofactory                : '1.0-beta3',
+        permissionsDispatcher      : '2.4.0',
+        spoonEspressoTests         : '1.7.1',
+        leakcanary                 : '1.6.1',
+]
+
+ext {
+    /**
+     * Builds an Android version code from the version of the project. 2 digits for major version, 2 for minor and 2 for patches. The last
+     * 4 digits are the CI build number. e.g. version 3.5.12 and build number 1344 would create a versionCode: 03051201344
+     */
+    buildVersionCode = {
+        def (major, minor, patch) = version.toLowerCase().replaceAll('-', '').tokenize('.')
+        (major, minor, patch, candidate) = [major, minor, patch].collect { it.toInteger() }
+        (major * 100000000) + (minor * 1000000) + (patch * 10000) + buildNumber.toInteger();
+    }
+
+}
