@@ -2,8 +2,8 @@ package com.mvp.rui.androidmvpdemo.di.component;
 
 
 import com.mvp.rui.androidmvpdemo.App;
-import com.rui.android_mvp_with_componentization.di.module.ActivityBindingModule;
-import com.rui.android_mvp_with_componentization.di.module.SingletonModule;
+import com.mvp.rui.androidmvpdemo.di.module.ActivityBindingModule;
+import com.mvp.rui.androidmvpdemo.di.module.SingletonModule;
 import com.rui.mvp.BaseApplication.BaseApplication;
 import com.rui.mvp.dagger.modules.AndroidModule;
 import com.rui.mvp.dagger.modules.ApplicationModule;

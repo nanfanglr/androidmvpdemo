@@ -1,9 +1,9 @@
-package com.rui.android_mvp_with_componentization.di.module;
+package com.mvp.rui.androidmvpdemo.di.module;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 
-import com.rui.android_mvp_with_componentization.ui.UserInfoActivity;
+import com.mvp.rui.androidmvpdemo.ui.UserInfoActivity;
 import com.rui.mvp.activity.BaseVSActivity;
 import com.rui.mvp.dagger.modules.BaseActivityModule;
 import com.rui.mvp.dagger.scopes.ActivityScope;

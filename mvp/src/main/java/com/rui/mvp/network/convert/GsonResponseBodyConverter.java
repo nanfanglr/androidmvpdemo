@@ -33,12 +33,12 @@ final class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
                 JsonReader jsonReader = gson.newJsonReader(value.charStream());
                 T data = adapter.read(jsonReader);
                 if (data == null) throw new UnknownServiceException("server back data is null");
-                //关注的重点，自定义响应码中非0的情况，一律抛出ApiException异常。
+                //关注的重点，自定义响应码中非1的情况，一律抛出ApiException异常。
                 //这样，我们就成功的将该异常交给onError()去处理了。
                 ResultModel resultModel = (ResultModel) data;
                 if (data instanceof ResultModel && !resultModel.isSuccess()) {
                     value.close();
-                    throw new ApiException(resultModel.getError(), resultModel.getMsg());
+                    throw new ApiException(resultModel.getCode(), resultModel.getMsg());
                 }
                 return data;
             } finally {

@@ -3,10 +3,10 @@ package com.mvp.rui.androidmvpdemo.presenter;
 
 import android.content.Context;
 
-import com.rui.android_mvp_with_componentization.datasource.UserInfoRepository;
-import com.rui.android_mvp_with_componentization.di.contract.LoginActView;
+import com.mvp.rui.androidmvpdemo.datasource.UserInfoRepository;
+import com.mvp.rui.androidmvpdemo.di.contract.LoginActView;
+import com.mvp.rui.androidmvpdemo.netservice.UserExampleService;
 import com.rui.android_mvp_with_componentization.model.UserInfo;
-import com.rui.android_mvp_with_componentization.netservice.UserExampleService;
 import com.rui.mvp.basemvp.BaseLoadPresenter;
 import com.rui.mvp.network.ApiErro.MyConsumer;
 

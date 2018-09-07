@@ -1,4 +1,4 @@
-package com.rui.android_mvp_with_componentization.netservice;
+package com.mvp.rui.androidmvpdemo.netservice;
 
 
 import com.rui.android_mvp_with_componentization.model.UserInfo;

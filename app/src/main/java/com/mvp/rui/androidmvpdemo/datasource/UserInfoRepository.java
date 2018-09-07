@@ -1,13 +1,13 @@
-package com.rui.android_mvp_with_componentization.datasource;
+package com.mvp.rui.androidmvpdemo.datasource;
 
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 
+import com.mvp.rui.androidmvpdemo.netservice.UserExampleService;
+import com.mvp.rui.androidmvpdemo.ui.LoginActivity;
 import com.rui.android_mvp_with_componentization.model.UserInfo;
-import com.rui.android_mvp_with_componentization.netservice.UserExampleService;
-import com.rui.android_mvp_with_componentization.ui.LoginActivity;
 import com.rui.mvp.network.basemodel.ResultModel;
 
 import org.reactivestreams.Publisher;

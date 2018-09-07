@@ -1,4 +1,4 @@
-package com.rui.android_mvp_with_componentization.di.contract;
+package com.mvp.rui.androidmvpdemo.di.contract;
 
 import com.rui.android_mvp_with_componentization.model.UserInfo;
 import com.rui.mvp.basemvp.LoadMvpView;

@@ -7,23 +7,81 @@ import android.text.TextUtils;
  */
 public class BaseResultModel extends BaseModel {
 
-    protected static final String LOGOUT_CODE = "99999";
-    protected static final String OUTDATE_CODE = "-1001";
+    /**
+     * 所有未知异常
+     */
+    public static final int UNKOWN_RESULT_CODE = -1;
+    /**
+     * 这个是个后台准备的 app不需要关心
+     */
+//    protected static final int API_CALL_FALLBACK_CODE = 0;
+    /**
+     * 请求成功的返回码
+     */
+    public static final int SUCCESS_RESULT_CODE = 1;
+    /**
+     * 未登录
+     */
+    public static final int NOT_AUTH = 9999;
+    /**
+     * api 参数验证错误码
+     */
+//    protected static final int API_PARAM_ERROR_CODE = 2;
+    /**
+     * 不合法的请求
+     */
+//    protected static final int UNVALID_REQUEST_CODE = 3;
+    /**
+     * 无权限
+     */
+    public static final int NOT_PRIV = 9998;
+    /**
+     * 登录环境有问题
+     */
+    public static final int LOGIN_ENIRONMENTAL = 9997;
+    /**
+     * TOKEN不合法
+     */
+    public static final int TOKEN_ERROR = 9996;
+    /**
+     * TOKEN验证不通过
+     */
+    public static final int TOKEN_ERROR2 = 10001;
+    /**
+     * 未绑定微信
+     */
+    public static final int MEMBER_NO_WX = 10016;
+    /**
+     * 未绑定QQ
+     */
+    public static final int MEMBER_NO_QQ = 10017;
     public static int PAGE_LIMIT = 20;
-    protected boolean success;
+    //    protected boolean success;
     protected String msg;
+    /**
+     * 总记录数
+     */
     protected int total;
     protected String imagePath;
-    protected String code;
-    protected String error_code;
-    protected int error;
+    /**
+     * 返回码，正常返回为 1
+     */
+    protected int code;
+//    protected String error_code;
+    /**
+     * 返回的错误信息 ,
+     */
+    protected String errMsg;
 
-    public int getError() {
-        return error;
+    public String getErrMsg() {
+        if (TextUtils.isEmpty(errMsg)) {
+            return "";
+        }
+        return errMsg;
     }
 
-    public void setError(int error) {
-        this.error = error;
+    public void setErrMsg(String errMsg) {
+        this.errMsg = errMsg;
     }
 
     public String getMsg() {
@@ -35,11 +93,7 @@ public class BaseResultModel extends BaseModel {
     }
 
     public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
+        return code == SUCCESS_RESULT_CODE;
     }
 
     public int getTotal() {
@@ -67,19 +121,19 @@ public class BaseResultModel extends BaseModel {
     }
 
     public boolean isLogout() {
-        return TextUtils.equals(LOGOUT_CODE, code);
+        return NOT_AUTH == code;
     }
 
     public boolean isOutDate() {
-        return TextUtils.equals(OUTDATE_CODE, code);
+        return TOKEN_ERROR == code;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public String getError_code() {
-        return error_code;
+    public void setCode(int code) {
+        this.code = code;
     }
 
 }

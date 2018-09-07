@@ -1,9 +1,8 @@
-package com.rui.android_mvp_with_componentization.di.module;
+package com.mvp.rui.androidmvpdemo.di.module;
 
-import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 
-import com.rui.android_mvp_with_componentization.ui.UserExampleActivity;
+import com.mvp.rui.androidmvpdemo.ui.UserExampleActivity;
 import com.rui.mvp.activity.BaseVSActivity;
 import com.rui.mvp.dagger.modules.BaseActivityModule;
 import com.rui.mvp.dagger.scopes.ActivityScope;
@@ -40,6 +39,6 @@ public abstract class UserExampleActModule {
      */
     @Binds
     @ActivityScope
-    abstract FragmentActivity activity( UserExampleActivity activity);
+    abstract FragmentActivity activity(UserExampleActivity activity);
 
 }

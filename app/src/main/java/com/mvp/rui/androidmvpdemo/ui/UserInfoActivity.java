@@ -4,16 +4,17 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
+import com.mvp.rui.androidmvpdemo.di.contract.UserInfoActView;
 import com.mvp.rui.androidmvpdemo.presenter.UserInfoActPresenter;
 import com.rui.mvp.activity.BaseActivity;
 
 import butterknife.BindView;
 
 public class UserInfoActivity extends BaseActivity<
-        com.rui.android_mvp_with_componentization.di.contract.UserInfoActView
+        UserInfoActView
         , UserInfoActPresenter>
         implements
-        com.rui.android_mvp_with_componentization.di.contract.UserInfoActView {
+     UserInfoActView {
 
     @BindView(R.id.tv_header)
     TextView tvHeader;

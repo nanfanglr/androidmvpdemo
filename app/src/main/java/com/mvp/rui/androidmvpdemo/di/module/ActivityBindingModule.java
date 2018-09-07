@@ -1,9 +1,10 @@
-package com.rui.android_mvp_with_componentization.di.module;
+package com.mvp.rui.androidmvpdemo.di.module;
 
-
-import com.rui.android_mvp_with_componentization.ui.UserExampleActivity;
-import com.rui.android_mvp_with_componentization.ui.LoginActivity;
-import com.rui.android_mvp_with_componentization.ui.UserInfoActivity;
+import com.mvp.rui.androidmvpdemo.ui.LoginActivity;
+import com.mvp.rui.androidmvpdemo.ui.MainActivity;
+import com.mvp.rui.androidmvpdemo.ui.MainVSActivity;
+import com.mvp.rui.androidmvpdemo.ui.UserExampleActivity;
+import com.mvp.rui.androidmvpdemo.ui.UserInfoActivity;
 import com.rui.mvp.dagger.scopes.ActivityScope;
 
 import dagger.Module;
@@ -15,13 +16,31 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBindingModule {
     /**
+     * 注入依赖到MainActivity
+     *
+     * @return
+     */
+    @ActivityScope
+    @ContributesAndroidInjector(modules = MainActModule.class)
+    abstract MainActivity contributeMainActivityInjector();
+
+    /**
+     * 注入依赖到MainVSActivity
+     *
+     * @return
+     */
+    @ActivityScope
+    @ContributesAndroidInjector(modules = MainActVSModule.class)
+    abstract MainVSActivity contributeMainVSActivityInjector();
+
+    /**
      * 注入依赖到LoginActivity
      *
      * @return
      */
     @ActivityScope
     @ContributesAndroidInjector(modules = LoginActModule.class)
-    abstract LoginActivity contributeMainActivityInjector();
+    abstract LoginActivity contributeLoginActivityInjector();
 
     /**
      * 注入依赖到 MainActivity
@@ -30,27 +49,16 @@ public abstract class ActivityBindingModule {
      */
     @ActivityScope
     @ContributesAndroidInjector(modules = UserExampleActModule.class)
-    abstract UserExampleActivity contributeSplashActivityInjector();
+    abstract UserExampleActivity contributeUserExampleActivityInjector();
 
     /**
-     * 注入依赖到 SplashActivity
+     * 注入依赖到 UserInfoActivity
      *
      * @return
      */
     @ActivityScope
-    @ContributesAndroidInjector(modules =  UserInfoActModule.class)
+    @ContributesAndroidInjector(modules = UserInfoActModule.class)
     abstract UserInfoActivity contributeUserInfoActivityInjector();
-//    /**
-//     * 注入依赖到MainVSActivity
-//     *
-//     * @return
-//     */
-//    @ActivityScope
-//    @ContributesAndroidInjector(modules = MainActVSModule.class)
-//    abstract MainVSActivity contributeMainVSActivityInjector();
 
-//    @ActivityScope
-//    @ContributesAndroidInjector
-//    abstract RuntimePermissionsActivity contributeRuntimePermissionsActivity();
 
 }

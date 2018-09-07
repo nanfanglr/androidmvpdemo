@@ -3,8 +3,8 @@ package com.mvp.rui.androidmvpdemo.presenter;
 
 import android.content.Context;
 
-import com.rui.android_mvp_with_componentization.datasource.UserInfoRepository;
-import com.rui.android_mvp_with_componentization.di.contract.UserInfoActView;
+import com.mvp.rui.androidmvpdemo.datasource.UserInfoRepository;
+import com.mvp.rui.androidmvpdemo.di.contract.UserInfoActView;
 import com.rui.mvp.basemvp.BaseLoadPresenter;
 
 import javax.inject.Inject;

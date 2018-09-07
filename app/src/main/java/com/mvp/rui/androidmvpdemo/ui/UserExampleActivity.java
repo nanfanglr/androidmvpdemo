@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
+import com.mvp.rui.androidmvpdemo.di.contract.UserExampleActView;
 import com.mvp.rui.androidmvpdemo.presenter.UserExamplePresenter;
 import com.rui.mvp.activity.BaseActivity;
 
@@ -15,10 +16,10 @@ import butterknife.OnClick;
 import timber.log.Timber;
 
 public class UserExampleActivity extends BaseActivity<
-        com.rui.android_mvp_with_componentization.di.contract.UserExampleActView
+        UserExampleActView
         , UserExamplePresenter>
         implements
-        com.rui.android_mvp_with_componentization.di.contract.UserExampleActView {
+        UserExampleActView {
 
     @BindView(R.id.tv_user_info)
     TextView tvUserInfo;

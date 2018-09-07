@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
+import com.mvp.rui.androidmvpdemo.di.contract.LoginActView;
 import com.mvp.rui.androidmvpdemo.presenter.LoginActPresenter;
 import com.rui.mvp.activity.BaseActivity;
 
@@ -17,10 +18,10 @@ import butterknife.OnClick;
 import timber.log.Timber;
 
 public class LoginActivity extends BaseActivity<
-        com.rui.android_mvp_with_componentization.di.contract.LoginActView
+        LoginActView
         , LoginActPresenter>
         implements
-        com.rui.android_mvp_with_componentization.di.contract.LoginActView {
+        LoginActView {
 
     @Inject
     com.rui.android_mvp_with_componentization.example.TestModel testModel;

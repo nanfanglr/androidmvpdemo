@@ -1,7 +1,8 @@
-package com.rui.android_mvp_with_componentization.di.module;
+package com.mvp.rui.androidmvpdemo.di.module;
 
-import com.rui.android_mvp_with_componentization.datasource.UserInfoRepository;
-import com.rui.android_mvp_with_componentization.netservice.UserExampleService;
+
+import com.mvp.rui.androidmvpdemo.datasource.UserInfoRepository;
+import com.mvp.rui.androidmvpdemo.netservice.UserExampleService;
 
 import javax.inject.Singleton;
 
