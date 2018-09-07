@@ -156,4 +156,20 @@ ext.projectDependencies = [
         leakcanary_android_no_op                : "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanary",
         leakcanary_support_fragment             : "com.squareup.leakcanary:leakcanary-support-fragment:$versions.leakcanary",
 
+        //BaseRecyclerViewAdapterHelper
+        BaseRecyclerViewAdapterHelper           : "com.github.CymChad:BaseRecyclerViewAdapterHelper:$versions.BRVAH",
+        //下拉刷新及上拉加载更多控件
+        SmartRefreshLayout                      : "com.scwang.smartrefresh:SmartRefreshLayout:$versions.SmartRefresh",
+        SmartRefreshHeader                      : "com.scwang.smartrefresh:SmartRefreshHeader:$versions.SmartRefresh",
+        //greendao
+        greendao                                : "org.greenrobot:greendao:$versions.greendao",
+        //eventbus
+        eventbus                                : "org.greenrobot:eventbus:$versions.eventbus",
+        //rxBinding
+        rxBinding                               : "com.jakewharton.rxbinding2:rxbinding:$versions.rxBinding",
+        // 缩放控件photoview
+        photoview                               : "com.bm.photoview:library:$versions.photoview",
+
+
+
 ]

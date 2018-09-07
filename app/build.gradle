@@ -11,39 +11,37 @@ android {
         applicationId "com.mvp.rui.androidmvpdemo"
         minSdkVersion versions.minSdkVersion
         targetSdkVersion versions.targetSdkVersion
-
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {//指定jdk 1.8 默认使用lambda表达式
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
     signingConfigs {
         release {
-            // Fetch signing config from relevant properties file
-            def keystorePropertiesFile = file("config/signing/signing.properties")
-            def keystoreProperties = new Properties()
-            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storePassword keystoreProperties['storePassword']
-            storeFile file('config/signing/release.keystore')
+//            keyAlias 'souyute'
+//            keyPassword 'souyute'
+//            storeFile file('E:/zhangdiantong/template/app/template.jks')
+//            storePassword 'souyute'
         }
+//        release {
+        // Fetch signing config from relevant properties file
+//            def keystorePropertiesFile = file("config/signing/signing.properties")
+//            def keystoreProperties = new Properties()
+//            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+//            keyAlias keystoreProperties['keyAlias']
+//            keyPassword keystoreProperties['keyPassword']
+//            storePassword keystoreProperties['storePassword']
+//            storeFile file('config/signing/release.keystore')
+//        }
 //        debug {
 //
 //        }
+    }
+
+    dexOptions {
+        jumboMode true
+        javaMaxHeapSize "4g"
     }
 
     buildTypes {
@@ -51,86 +49,67 @@ android {
             debuggable false
             minifyEnabled true
             zipAlignEnabled true
-//            shrinkResources true    // 移除无用的resource文件
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             multiDexEnabled true
+            shrinkResources true    // 移除无用的resource文件
+            resValue "string", "app_name", "mvp"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //            signingConfig signingConfigs.release
         }
 
         debug {
-//            versionNameSuffix "" + new Date().format('yyyyMMdd')
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            applicationIdSuffix '.develop'
-            // These 2 lines allow incremental builds to work properly
-            buildConfigField "boolean", "API_ENV", "false"
-            buildConfigField "String", "GIT_SHA", "\"DEBUG\""
-            buildConfigField "String", "BUILD_TIME", "\"DEBUG\""
             debuggable true
             minifyEnabled false
             zipAlignEnabled true
 //            shrinkResources true    // 移除无用的resource文件
-            testCoverageEnabled true
-            // Enable jacoco for espresso tests. For espresso and mixed see jacoco.gradle file.
+            resValue "string", "app_name", "mvp"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             multiDexEnabled true
-//            signingConfig signingConfigs.release
         }
+
+        applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                def fileName
+                if (outputFileName != null && outputFileName.endsWith('.apk')) {
+                    // 输出apk名称为mvp-app-release-v1.0.0
+                    if (variant.buildType.name.equals('release')) {
+                        fileName = "mvp-app-release-v${defaultConfig.versionName}.apk"
+                    } else if (variant.buildType.name.equals('debug')) {
+                        fileName = "mvp-app-debug-v${defaultConfig.versionName}.apk"
+                    }
+                    outputFileName = fileName
+                }
+            }
+        }
+    }
+    compileOptions {//指定jdk 1.8 默认使用lambda表达式
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation projectDependencies.supportLibsAppCompat
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation projectDependencies.supportLibsConstraintLayout
     implementation projectDependencies.supportDesign
+    implementation projectDependencies.supportLibsAppCompat
 
+    //如果住app编译无法通过可以考虑先注释掉其他的有dagger2依赖模块
+    //这样就进编译app模块使其先通过编译，然后在依赖别的模块
     implementation project(':mvp')
-    // Logging
-    implementation projectDependencies.timber
 
-    // MVP library
-    implementation(projectDependencies.mosbyMvp) {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
-    implementation(projectDependencies.mosbyViewState) {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
-    implementation(projectDependencies.mosbyNullPresenter) {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
-
-    // Dagger2
+    //Dagger2
+//    implementation projectDependencies.dagger
     annotationProcessor projectDependencies.daggerAnnotationProcessor
-    implementation projectDependencies.dagger
-    implementation projectDependencies.daggerAndroid
+//    implementation projectDependencies.daggerAndroid
     annotationProcessor projectDependencies.daggerAndroidAnnotationProcessor
 
-    // ButterKnife
-    implementation projectDependencies.butterknife
+    //ButterKnife
+//    api projectDependencies.butterknife
     annotationProcessor projectDependencies.butterknifeAnnotationProcessor
-
-    // RetroFit
-    implementation projectDependencies.retrofit
-    implementation projectDependencies.retrofitGson
-    implementation projectDependencies.okhttpLoggingInterceptor
-    implementation projectDependencies.retrofitRxJava2Adapter
-
-    // RxJava
-    implementation projectDependencies.rxAndroid
-    implementation projectDependencies.rxJava2
-
-    // Image loading//图片加载
-    implementation projectDependencies.glideImageLoading
-    annotationProcessor projectDependencies.glideAnnotationProcessor
-
-    //stetho
-    implementation projectDependencies.stetho
-
-    //测试
+    
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation('com.android.support.test:runner:1.0.1') {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 }
