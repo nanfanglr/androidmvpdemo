@@ -1,12 +1,12 @@
-package com.mvp.rui.androidmvpdemo.presenter;
+package com.mvp.rui.androidmvpdemo.di.presenter;
 
 
 import android.content.Context;
 
 import com.mvp.rui.androidmvpdemo.datasource.UserInfoRepository;
 import com.mvp.rui.androidmvpdemo.di.contract.LoginActView;
+import com.mvp.rui.androidmvpdemo.model.UserInfo;
 import com.mvp.rui.androidmvpdemo.netservice.UserExampleService;
-import com.rui.android_mvp_with_componentization.model.UserInfo;
 import com.rui.mvp.basemvp.BaseLoadPresenter;
 import com.rui.mvp.network.ApiErro.MyConsumer;
 
@@ -39,12 +39,9 @@ public class LoginActPresenter extends BaseLoadPresenter<LoginActView> {
     public void login(String phone) {
         composite.add(userInfoRepository.loginOB(phone)
                         .compose(flowableTransformer())
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(userInfo -> {
                             if (userInfo.isSuccess()) {
                                 UserInfo info = userInfo.getData();
-//                                userInfoRepository.updateUserInfo(info);
                                 getView().onLogin(info.toString());
                             } else {
                                 getView().onLogin("登陆失败");

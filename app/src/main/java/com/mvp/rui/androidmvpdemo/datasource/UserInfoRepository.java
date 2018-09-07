@@ -5,9 +5,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 
+import com.mvp.rui.androidmvpdemo.model.UserInfo;
 import com.mvp.rui.androidmvpdemo.netservice.UserExampleService;
 import com.mvp.rui.androidmvpdemo.ui.LoginActivity;
-import com.rui.android_mvp_with_componentization.model.UserInfo;
 import com.rui.mvp.network.basemodel.ResultModel;
 
 import org.reactivestreams.Publisher;
@@ -39,9 +39,14 @@ public class UserInfoRepository {
      * 在需要更新用户新的页面，注入UserInfoRepository，获取到该对象后即可更新数据
      */
     private Subject<UserInfo> subject;
+    /**
+     * 用于处理点击对话框取消的标识符，以便阻止订阅发生的后续事件。
+     * 如果不需要对话框,这个完全可以不用定义
+     */
+    private boolean cancelSubscribe;
 
     /**
-     * 数据源的构造函数
+     * user数据源的构造函数
      *
      * @param userExampleService
      */
@@ -51,6 +56,7 @@ public class UserInfoRepository {
         Timber.d("------------->mainService=" + userExampleService);
     }
 
+
     /**
      * 登录及更新用户信息
      *
@@ -58,12 +64,35 @@ public class UserInfoRepository {
      * @return
      */
     public Flowable<ResultModel<UserInfo>> loginOB(String phone) {
-        return userExampleService.login(phone)
-                .doOnNext(userInfoResultModel -> {
-                    if (userInfoResultModel.isSuccess()) {
-                        updateUserInfo(userInfoResultModel.getData());
+        //这是写的测试数据
+        return Flowable.create((FlowableOnSubscribe<ResultModel<UserInfo>>)
+                emitter -> {
+                    UserInfo userInfo = new UserInfo();
+                    userInfo.setMobileNum(phone);
+                    userInfo.setUserId(1);
+                    userInfo.setAccountId(23);
+                    userInfo.setToken("jklasjdflajsdlfajsdfasd");
+                    userInfo.setUserName("Jay");
+                    userInfo.setUserCode("Jay-2222");
+                    ResultModel<UserInfo> resultModel = new ResultModel<>();
+                    resultModel.setData(userInfo);
+                    resultModel.setCode(1);
+                    emitter.onNext(resultModel);
+                    emitter.onComplete();
+                }, BackpressureStrategy.LATEST)
+                .doOnNext(resultModel -> {
+                    if (resultModel.isSuccess()) {
+                        updateUserInfo(resultModel.getData());
                     }
-                });
+                })
+                ;
+//        //这是接口返回的数据
+//        return userExampleService.login(phone)
+//                .doOnNext(userInfoResultModel -> {
+//                    if (userInfoResultModel.isSuccess()) {
+//                        updateUserInfo(userInfoResultModel.getData());
+//                    }
+//                });
     }
 
     /**
@@ -112,6 +141,7 @@ public class UserInfoRepository {
      * @return
      */
     public Flowable<UserInfo> checkLoginOB(Context context) {
+        cancelSubscribe = false;
         return Flowable
                 .create((FlowableOnSubscribe<Boolean>) emitter -> {
                     emitter.onNext(userInfo == null);
@@ -124,6 +154,7 @@ public class UserInfoRepository {
                                 .setTitle("当前操作需要登录app")
                                 .setMessage("请先登录app")
                                 .setNegativeButton("取消", (dialog, which) -> {
+                                    cancelSubscribe = true;
                                 })
                                 .setPositiveButton("确定", (dialog, which) -> {
                                     context.startActivity(new Intent(context, LoginActivity.class));
@@ -154,6 +185,11 @@ public class UserInfoRepository {
      */
     public Flowable<UserInfo> getUserInfoOB() {
         return Flowable.just(userInfo);
+    }
+
+
+    public boolean isCancelSubscribe() {
+        return cancelSubscribe;
     }
 
 }

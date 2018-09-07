@@ -1,11 +1,10 @@
-package com.mvp.rui.androidmvpdemo.presenter;
-
+package com.mvp.rui.androidmvpdemo.di.presenter;
 
 import android.content.Context;
 
 import com.mvp.rui.androidmvpdemo.datasource.UserInfoRepository;
 import com.mvp.rui.androidmvpdemo.di.contract.UserExampleActView;
-import com.rui.android_mvp_with_componentization.model.UserInfo;
+import com.mvp.rui.androidmvpdemo.model.UserInfo;
 import com.rui.mvp.basemvp.BaseLoadPresenter;
 
 import org.reactivestreams.Publisher;
@@ -32,22 +31,24 @@ public class UserExamplePresenter extends BaseLoadPresenter<UserExampleActView> 
     }
 
     /**
-     * @param id 用来区分，那个操作的回调
+     * 检查登录状态，并做下一次操作
      */
-    public void checkLogin(int id) {
+    public void checkLogin() {
         composite.add(userInfoRepository.checkLoginOB(context)
-                        .flatMap((Function<UserInfo, Publisher<UserInfo>>) userInfo -> {
-                            //这里转换成为需要登录状态之前的操作
-                            return Flowable.just(userInfo);
-                        })
-                        .subscribeOn(AndroidSchedulers.mainThread())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(userInfo -> {
-                            //只关心成功的情况
-                            Timber.d("-------->id=" + id);
-                            getView().onLogin(id);
-//                    getView().updateUserInfo(userInfo.toString());
-                        })
+                .flatMap((Function<UserInfo, Publisher<UserInfo>>) userInfo -> {
+                    //这里转换成为需要登录状态之前的操作
+                    // 如果取消了发出一个空的数据，避免触发下一个操作
+                    //另外可以在点击去登录的时候去取消订阅，这样可以彻底解除订阅关系
+                    return !userInfoRepository.isCancelSubscribe() ?
+                            Flowable.just(userInfo) : Flowable.empty();
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(userInfo -> {
+                    Timber.d("------------>checkLogin");
+                    //只关心成功的情况
+                    getView().onLogin();
+                })
         );
     }
 

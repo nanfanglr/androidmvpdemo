@@ -14,9 +14,9 @@ import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.di.contract.HomeFgView;
+import com.mvp.rui.androidmvpdemo.di.presenter.HomeFgPresenter;
 import com.mvp.rui.androidmvpdemo.model.InfoCategory;
 import com.mvp.rui.androidmvpdemo.model.InfomationVModel;
-import com.mvp.rui.androidmvpdemo.presenter.HomeFgPresenter;
 import com.mvp.rui.androidmvpdemo.ui.adapter.FgPagerAdapter;
 import com.rui.mvp.fragment.BaseLazyFragment;
 
@@ -34,6 +34,9 @@ public class HomeFragment extends BaseLazyFragment<
         > implements
         HomeFgView {
 
+    public List<InfoCategory> selectedDatas;
+    public List<InfoCategory> unSelectedDatas;
+    public List<InfoCategory> allDatas;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.vp_container)
@@ -44,17 +47,12 @@ public class HomeFragment extends BaseLazyFragment<
     ImageView ivAdd;
     @BindView(R.id.ll_head)
     LinearLayout llHead;
-
     private List<Fragment> fragmentList;
+    //    public List<String> selectedDatas;
+//    private String[] titles = {"推荐", "图片", "报价", "科技", "体育", "热点", "两会", "中国"};
     private Fragment currentFragment;
     private FgPagerAdapter fgPagerAdapter;
     private boolean isCategorychange;
-    //    public List<String> selectedDatas;
-//    private String[] titles = {"推荐", "图片", "报价", "科技", "体育", "热点", "两会", "中国"};
-
-    public List<InfoCategory> selectedDatas;
-    public List<InfoCategory> unSelectedDatas;
-    public List<InfoCategory> allDatas;
 
     public static HomeFragment newInstance(Context context) {
         Bundle bundle = new Bundle();
@@ -67,15 +65,16 @@ public class HomeFragment extends BaseLazyFragment<
     }
 
     @Override
-    protected void lazyFetchData() {
-        getPresenter().getCategory(null);
-    }
-
-    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews();
     }
+
+    @Override
+    protected void lazyFetchData() {
+        getPresenter().getCategory(null);
+    }
+
 
     private void initViews() {
         fragmentList = new ArrayList<>();
@@ -116,20 +115,5 @@ public class HomeFragment extends BaseLazyFragment<
                 slidingTabStrip.setMinimumWidth(slidingTabStrip.getMeasuredWidth() + ivAdd.getMeasuredWidth());
             }
         });
-    }
-
-    @Override
-    public void showLoadingBar() {
-
-    }
-
-    @Override
-    public void dismissLoadingBar() {
-
-    }
-
-    @Override
-    public void showLoadingFailureError() {
-
     }
 }

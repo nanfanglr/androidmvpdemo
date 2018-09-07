@@ -1,14 +1,17 @@
 package com.mvp.rui.androidmvpdemo.ui;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.di.contract.LoginActView;
-import com.mvp.rui.androidmvpdemo.presenter.LoginActPresenter;
+import com.mvp.rui.androidmvpdemo.di.presenter.LoginActPresenter;
+import com.mvp.rui.androidmvpdemo.example.TestModel;
 import com.rui.mvp.activity.BaseActivity;
 
 import javax.inject.Inject;
@@ -17,6 +20,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import timber.log.Timber;
 
+/**
+ * 示范的登录界面
+ */
 public class LoginActivity extends BaseActivity<
         LoginActView
         , LoginActPresenter>
@@ -24,7 +30,7 @@ public class LoginActivity extends BaseActivity<
         LoginActView {
 
     @Inject
-    com.rui.android_mvp_with_componentization.example.TestModel testModel;
+    TestModel testModel;
     @BindView(R.id.et_input)
     EditText etInput;
     @BindView(R.id.btn_login)
@@ -57,7 +63,11 @@ public class LoginActivity extends BaseActivity<
             case R.id.btn_login:
                 Timber.d("----------->onViewClicked");
                 String phone = etInput.getText().toString().trim();
-                getPresenter().login(phone);
+                if (!TextUtils.isEmpty(phone)) {
+                    getPresenter().login(phone);
+                } else {
+                    Toast.makeText(this, "请输入手机号码", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.tv_login:
                 break;

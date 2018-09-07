@@ -1,4 +1,4 @@
-package com.rui.android_mvp_with_componentization.example;
+package com.mvp.rui.androidmvpdemo.example;
 
 import android.content.Context;
 

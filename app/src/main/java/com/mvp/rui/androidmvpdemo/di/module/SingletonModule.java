@@ -23,7 +23,7 @@ public final class SingletonModule {
 
     @Provides
     @Singleton
-    static UserExampleService providesMainService(Retrofit retrofit) {
+    static UserExampleService providesUserExampleService(Retrofit retrofit) {
         return retrofit.create(UserExampleService.class);
     }
 

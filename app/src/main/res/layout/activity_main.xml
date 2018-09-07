@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainVSActivity">
+    tools:context=".ui.MainActivity">
 
     <RelativeLayout
         android:id="@+id/rl_home"
@@ -32,6 +32,7 @@
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:focusable="false"
             android:layout_alignParentBottom="true"
             android:background="@android:color/white"
             android:orientation="horizontal"
@@ -117,7 +118,7 @@
             android:gravity="center"
             android:paddingLeft="6dp"
             android:paddingRight="6dp"
-            android:text="发布"
+            android:text="登录"
             android:textColor="@android:color/black"
             android:textSize="12sp" />
 
@@ -142,6 +143,7 @@
             tools:visibility="visible" />
 
     </RelativeLayout>
+
 </RelativeLayout>
 
 

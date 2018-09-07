@@ -8,13 +8,16 @@ import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.di.contract.UserExampleActView;
-import com.mvp.rui.androidmvpdemo.presenter.UserExamplePresenter;
+import com.mvp.rui.androidmvpdemo.di.presenter.UserExamplePresenter;
 import com.rui.mvp.activity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import timber.log.Timber;
 
+/**
+ * userinfo显示的页面
+ */
 public class UserExampleActivity extends BaseActivity<
         UserExampleActView
         , UserExamplePresenter>
@@ -56,10 +59,8 @@ public class UserExampleActivity extends BaseActivity<
     }
 
     @Override
-    public void onLogin(int id) {
-        if (id == R.id.btn_to_user) {
-            startActivity(new Intent(this, UserInfoActivity.class));
-        }
+    public void onLogin() {
+        startActivity(new Intent(this, UserInfoActivity.class));
     }
 
     @OnClick({R.id.tv_login, R.id.btn_to_user})
@@ -70,7 +71,7 @@ public class UserExampleActivity extends BaseActivity<
                 break;
             case R.id.btn_to_user:
                 //前往用户信息页面前，先要判断是否登录
-                getPresenter().checkLogin(R.id.btn_to_user);
+                getPresenter().checkLogin();
                 break;
         }
     }

@@ -16,7 +16,7 @@ import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.di.contract.HomeFgView;
 import com.mvp.rui.androidmvpdemo.model.InfoCategory;
 import com.mvp.rui.androidmvpdemo.model.InfomationVModel;
-import com.mvp.rui.androidmvpdemo.presenter.HomeVSFgPresenter;
+import com.mvp.rui.androidmvpdemo.di.presenter.HomeVSFgPresenter;
 import com.mvp.rui.androidmvpdemo.ui.adapter.FgPagerAdapter;
 import com.mvp.rui.androidmvpdemo.viewstate.HomeFgViewState;
 import com.rui.mvp.fragment.BaseLazyVSFragment;

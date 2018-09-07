@@ -1,5 +1,6 @@
 package com.mvp.rui.androidmvpdemo.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -11,10 +12,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
+import com.mvp.rui.androidmvpdemo.di.contract.MainActView;
+import com.mvp.rui.androidmvpdemo.di.presenter.MainActPresenter;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
-import com.mvp.rui.androidmvpdemo.di.contract.MainActView;
-import com.mvp.rui.androidmvpdemo.presenter.MainActPresenter;
 import com.mvp.rui.androidmvpdemo.ui.fragment.ConnectionFragment;
 import com.mvp.rui.androidmvpdemo.ui.fragment.HomeFragment;
 import com.mvp.rui.androidmvpdemo.ui.fragment.MallFragment;
@@ -25,6 +26,7 @@ import com.rui.mvp.constants.APPValue;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by rui on 2018/4/3
@@ -78,7 +80,9 @@ public class MainActivity extends BaseActivity<
     //如果是通过本类来接收的，可以直接通过构造来注入
     @Inject
     TestContract.TestInner test2;
+
     private Fragment mCurrentFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +129,6 @@ public class MainActivity extends BaseActivity<
                 return APPValue.FRAGMENT_HOME;
             case R.id.rb_offer:
                 return APPValue.FRAGMENT_OFFER;
-//                return APPValue.FRAGMENT_INDEX;
             case R.id.rb_mall:
                 return APPValue.FRAGMENT_Mall;
             case R.id.rb_connections:
@@ -133,6 +136,12 @@ public class MainActivity extends BaseActivity<
             default:
                 return "";
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.exit(0);
     }
 
     @Override
@@ -145,18 +154,12 @@ public class MainActivity extends BaseActivity<
         switchMenu(getFragmenTag(checkedId));
     }
 
-    @Override
-    public void showLoadingBar() {
-
-    }
-
-    @Override
-    public void dismissLoadingBar() {
-
-    }
-
-    @Override
-    public void showLoadingFailureError() {
-
+    @OnClick({R.id.tv_publish})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_publish:
+                startActivity(new Intent(this, UserExampleActivity.class));
+                break;
+        }
     }
 }

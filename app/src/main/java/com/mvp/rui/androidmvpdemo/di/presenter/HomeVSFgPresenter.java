@@ -1,8 +1,8 @@
-package com.mvp.rui.androidmvpdemo.presenter;
+package com.mvp.rui.androidmvpdemo.di.presenter;
 
 
 import com.mvp.rui.androidmvpdemo.di.contract.HomeFgView;
-import com.mvp.rui.androidmvpdemo.mapper.HomeMapper;
+import com.mvp.rui.androidmvpdemo.mapper.HomeVSMapper;
 import com.mvp.rui.androidmvpdemo.netservice.HomeService;
 import com.rui.mvp.basemvp.BasePresenter;
 
@@ -15,15 +15,15 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by rui on 2018/3/9.
  */
-public class HomeFgPresenter extends BasePresenter<HomeFgView> {
+public class HomeVSFgPresenter extends BasePresenter<HomeFgView> {
 
     private HomeService homeService;
-    private HomeMapper homeMapper;
+    private HomeVSMapper homeVSMapper;
 
     @Inject
-    public HomeFgPresenter(HomeService homeService, HomeMapper homeMapper) {
+    public HomeVSFgPresenter(HomeService homeService, HomeVSMapper homeVSMapper) {
         this.homeService = homeService;
-        this.homeMapper = homeMapper;
+        this.homeVSMapper = homeVSMapper;
     }
 
     public void getCategory(String token) {
@@ -39,7 +39,7 @@ public class HomeFgPresenter extends BasePresenter<HomeFgView> {
                     double dis = o1.getSeqNum() - o2.getSeqNum();
                     return dis > 0 ? 1 : dis < 0 ? -1 : 0;
                 })
-                .map(infoCategorys -> homeMapper.map(infoCategorys))
+                .map(infoCategorys -> homeVSMapper.map(infoCategorys))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(model -> {

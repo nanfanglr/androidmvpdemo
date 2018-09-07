@@ -14,7 +14,7 @@ import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.example.Test;
 import com.mvp.rui.androidmvpdemo.example.TestContract;
 import com.mvp.rui.androidmvpdemo.di.contract.MainActView;
-import com.mvp.rui.androidmvpdemo.presenter.MainActPresenter;
+import com.mvp.rui.androidmvpdemo.di.presenter.MainActPresenter;
 import com.mvp.rui.androidmvpdemo.ui.fragment.ConnectionFragment;
 import com.mvp.rui.androidmvpdemo.ui.fragment.HomeVSFragment;
 import com.mvp.rui.androidmvpdemo.ui.fragment.MallFragment;

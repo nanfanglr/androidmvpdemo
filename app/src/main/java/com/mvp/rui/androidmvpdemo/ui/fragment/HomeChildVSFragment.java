@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.di.contract.HomeChildFgView;
-import com.mvp.rui.androidmvpdemo.presenter.HomeChildFgPresenter;
+import com.mvp.rui.androidmvpdemo.di.presenter.HomeChildFgPresenter;
 import com.mvp.rui.androidmvpdemo.viewstate.HomeChildFgViewState;
 import com.rui.mvp.fragment.BaseLazyVSFragment;
 
@@ -26,13 +26,12 @@ public class HomeChildVSFragment extends BaseLazyVSFragment<
         > implements
         HomeChildFgView {
 
-    @BindView(R.id.rv_info)
-    RecyclerView rvInfo;
-    @BindView(R.id.tv_name)
-    TextView tvName;
-
     protected int fragmentId;
     protected String fragmentTitle;
+    //    @BindView(R.id.rv_info)
+//    RecyclerView rvInfo;
+    @BindView(R.id.tv_name)
+    TextView tvName;
 
     public static HomeChildVSFragment newInstance(
             Context context
@@ -54,11 +53,12 @@ public class HomeChildVSFragment extends BaseLazyVSFragment<
             fragmentTitle = arguments.getString("title");
         }
         tvName.setText(fragmentTitle);
-    }
-
-    @Override
-    protected int getLayout() {
-        return R.layout.fragment_homechild;
+        tvName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "homechildvsfragment", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -67,18 +67,8 @@ public class HomeChildVSFragment extends BaseLazyVSFragment<
     }
 
     @Override
-    public void showLoadingBar() {
-
-    }
-
-    @Override
-    public void dismissLoadingBar() {
-
-    }
-
-    @Override
-    public void showLoadingFailureError() {
-
+    protected int getLayout() {
+        return R.layout.fragment_homechild;
     }
 
 }

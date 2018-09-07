@@ -1,4 +1,4 @@
-package com.rui.android_mvp_with_componentization.model;
+package com.mvp.rui.androidmvpdemo.model;
 
 
 import java.io.Serializable;

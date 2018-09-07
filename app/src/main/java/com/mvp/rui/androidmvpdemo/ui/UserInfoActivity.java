@@ -5,16 +5,20 @@ import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.di.contract.UserInfoActView;
-import com.mvp.rui.androidmvpdemo.presenter.UserInfoActPresenter;
+import com.mvp.rui.androidmvpdemo.di.presenter.UserInfoActPresenter;
+import com.mvp.rui.androidmvpdemo.model.UserInfo;
 import com.rui.mvp.activity.BaseActivity;
 
 import butterknife.BindView;
 
+/**
+ * 个人信息页面
+ */
 public class UserInfoActivity extends BaseActivity<
         UserInfoActView
         , UserInfoActPresenter>
         implements
-     UserInfoActView {
+        UserInfoActView {
 
     @BindView(R.id.tv_header)
     TextView tvHeader;
@@ -33,7 +37,7 @@ public class UserInfoActivity extends BaseActivity<
     }
 
     @Override
-    public void onUserInfo(com.rui.android_mvp_with_componentization.model.UserInfo userInfo) {
+    public void onUserInfo(UserInfo userInfo) {
         tvUserInfo.setText(userInfo.toString());
     }
 }

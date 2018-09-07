@@ -1,7 +1,7 @@
 package com.mvp.rui.androidmvpdemo.netservice;
 
 
-import com.rui.android_mvp_with_componentization.model.UserInfo;
+import com.mvp.rui.androidmvpdemo.model.UserInfo;
 import com.rui.mvp.network.basemodel.ResultModel;
 
 import io.reactivex.Flowable;

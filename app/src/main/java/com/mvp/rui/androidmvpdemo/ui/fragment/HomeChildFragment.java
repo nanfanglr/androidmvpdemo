@@ -4,13 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.mvp.rui.androidmvpdemo.R;
 import com.mvp.rui.androidmvpdemo.di.contract.HomeChildFgView;
-import com.mvp.rui.androidmvpdemo.presenter.HomeChildFgPresenter;
+import com.mvp.rui.androidmvpdemo.di.presenter.HomeChildFgPresenter;
 import com.rui.mvp.fragment.BaseLazyFragment;
 
 import butterknife.BindView;
@@ -24,13 +23,12 @@ public class HomeChildFragment extends BaseLazyFragment<
         > implements
         HomeChildFgView {
 
-    @BindView(R.id.rv_info)
-    RecyclerView rvInfo;
-    @BindView(R.id.tv_name)
-    TextView tvName;
-
     protected int fragmentId;
     protected String fragmentTitle;
+    //    @BindView(R.id.rv_info)
+//    RecyclerView rvInfo;
+    @BindView(R.id.tv_name)
+    TextView tvName;
 
     public static HomeChildFragment newInstance(
             Context context
@@ -55,28 +53,13 @@ public class HomeChildFragment extends BaseLazyFragment<
     }
 
     @Override
-    protected int getLayout() {
-        return R.layout.fragment_homechild;
-    }
-
-    @Override
     protected void lazyFetchData() {
 
     }
 
     @Override
-    public void showLoadingBar() {
-
-    }
-
-    @Override
-    public void dismissLoadingBar() {
-
-    }
-
-    @Override
-    public void showLoadingFailureError() {
-
+    protected int getLayout() {
+        return R.layout.fragment_homechild;
     }
 
 }

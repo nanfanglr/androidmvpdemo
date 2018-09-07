@@ -1,4 +1,4 @@
-package com.mvp.rui.androidmvpdemo.presenter;
+package com.mvp.rui.androidmvpdemo.di.presenter;
 
 
 import com.mvp.rui.androidmvpdemo.di.contract.HomeChildFgView;

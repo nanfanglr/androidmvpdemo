@@ -17,6 +17,6 @@ public interface UserExampleActView extends LoadMvpView {
     /**
      * 登录完成后的回调
      */
-    void onLogin(int id);
+    void onLogin();
 
 }
