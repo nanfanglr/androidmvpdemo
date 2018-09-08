@@ -1,1 +1,1 @@
-include ':app',':mvp', ':common'
+include ':app',':mvp', ':common', ':toolkit', ':viewkit'
