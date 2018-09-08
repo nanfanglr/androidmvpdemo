@@ -96,7 +96,7 @@ dependencies {
 
     //如果住app编译无法通过可以考虑先注释掉其他的有dagger2依赖模块
     //这样就进编译app模块使其先通过编译，然后在依赖别的模块
-    implementation project(':mvp')
+    implementation project(':common')
 
     //Dagger2
 //    implementation projectDependencies.dagger
@@ -107,7 +107,7 @@ dependencies {
     //ButterKnife
 //    api projectDependencies.butterknife
     annotationProcessor projectDependencies.butterknifeAnnotationProcessor
-    
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

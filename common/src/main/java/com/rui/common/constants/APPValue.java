@@ -1,4 +1,4 @@
-package com.rui.mvp.constants;//package com.mvp.rui.androidmvpdemo.common.constants;
+package com.rui.common.constants;//package com.mvp.rui.androidmvpdemo.common.constants;
 
 /**
  * 这里主要定义APP用的一些公开常量
@@ -22,4 +22,17 @@ public interface APPValue {
      * 默认栏目
      */
     String CATEGORY_DEFUALT = "DF";
+
+    /**
+     * 第一次加载数据
+     */
+    int LOAD_FIRST = 0;
+    /**
+     * 下拉刷新数据
+     */
+    int LOAD_REFRESH = 1;
+    /**
+     * 上拉加载更多
+     */
+    int LOAD_MORE = 2;
 }
