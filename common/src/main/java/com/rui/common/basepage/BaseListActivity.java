@@ -22,6 +22,7 @@ import javax.inject.Provider;
 
 /**
  * 这是一个给列表封装的BaseActivity,封转列表的初始化，emptyView，上拉加载下拉刷新框架
+ * 根据项目需求修改页面相关的逻辑
  * Created by rui on 2018/7/28.
  */
 public abstract class BaseListActivity<

@@ -1,7 +1,7 @@
 package com.rui.common.constant;//package com.mvp.rui.androidmvpdemo.common.constants;
 
 /**
- * 这里主要定义APP用的一些公开常量
+ * 这里主要定义APP用的常量
  * Created by rui on 2018/3/9.
  */
 public interface APPValue {

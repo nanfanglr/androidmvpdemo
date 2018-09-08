@@ -5,7 +5,8 @@ import android.support.annotation.UiThread;
 import com.rui.mvp.basemvp.LoadMvpView;
 
 /**
- * Created by rui on 2018/3/9.
+ * 定义上拉下拉刷新的结束动画接口
+ * Created by rui on 2018/9/8.
  */
 public interface LoadPageView extends LoadMvpView {
 
