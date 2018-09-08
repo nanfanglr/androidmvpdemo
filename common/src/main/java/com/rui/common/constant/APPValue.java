@@ -1,4 +1,4 @@
-package com.rui.common.constants;//package com.mvp.rui.androidmvpdemo.common.constants;
+package com.rui.common.constant;//package com.mvp.rui.androidmvpdemo.common.constants;
 
 /**
  * 这里主要定义APP用的一些公开常量

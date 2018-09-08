@@ -1,4 +1,4 @@
-package com.rui.common.base;
+package com.rui.common.basepage;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback;
 import com.rui.common.R;
-import com.rui.common.constants.APPValue;
+import com.rui.common.constant.APPValue;
 import com.rui.mvp.activity.BaseActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;

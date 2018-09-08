@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import com.mvp.rui.androidmvpdemo.model.InfoCategory;
 import com.mvp.rui.androidmvpdemo.model.InfomationVModel;
 import com.mvp.rui.androidmvpdemo.ui.fragment.HomeChildVSFragment;
-import com.rui.common.constants.APPValue;
+import com.rui.common.constant.APPValue;
 import com.rui.mvp.interfaces.Mapper;
 
 import java.util.ArrayList;

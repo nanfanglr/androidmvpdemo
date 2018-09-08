@@ -1,4 +1,4 @@
-package com.rui.common.imageload;
+package com.rui.common.imageloader;
 
 /**
  * Created by linet on 2017/8/22.

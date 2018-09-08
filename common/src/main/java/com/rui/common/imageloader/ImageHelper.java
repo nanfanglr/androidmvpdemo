@@ -1,4 +1,4 @@
-package com.rui.common.imageload;//package com.souyute.sytbook.imageload;
+package com.rui.common.imageloader;//package com.souyute.sytbook.imageload;
 //
 //import android.text.TextUtils;
 //

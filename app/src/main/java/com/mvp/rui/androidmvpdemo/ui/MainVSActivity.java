@@ -21,7 +21,7 @@ import com.mvp.rui.androidmvpdemo.ui.fragment.MallFragment;
 import com.mvp.rui.androidmvpdemo.ui.fragment.OfferFragment;
 import com.mvp.rui.androidmvpdemo.viewstate.MainActViewState;
 import com.rui.mvp.activity.BaseVSActivity;
-import com.rui.common.constants.APPValue;
+import com.rui.common.constant.APPValue;
 
 import javax.inject.Inject;
 

@@ -21,7 +21,7 @@ import com.mvp.rui.androidmvpdemo.ui.fragment.HomeFragment;
 import com.mvp.rui.androidmvpdemo.ui.fragment.MallFragment;
 import com.mvp.rui.androidmvpdemo.ui.fragment.OfferFragment;
 import com.rui.mvp.activity.BaseActivity;
-import com.rui.common.constants.APPValue;
+import com.rui.common.constant.APPValue;
 
 import javax.inject.Inject;
 
