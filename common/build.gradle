@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion versions.compileSdkVersion
-    
+
     defaultConfig {
         minSdkVersion versions.minSdkVersion
         targetSdkVersion versions.targetSdkVersio
@@ -32,6 +32,7 @@ dependencies {
     implementation projectDependencies.supportDesign
 
     api project(':mvp')
+    implementation project(':toolkit')
     //glide
     implementation projectDependencies.glideImageLoading
     annotationProcessor projectDependencies.glideAnnotationProcessor
@@ -46,4 +47,5 @@ dependencies {
         exclude group: 'com.android.support'
     }
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
 }

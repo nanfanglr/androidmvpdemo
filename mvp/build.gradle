@@ -33,6 +33,9 @@ dependencies {
     //个人认为基础类库都用api依赖方式
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation projectDependencies.supportDesign
+    implementation projectDependencies.supportLibsAppCompat
+
 //    implementation 'com.android.support:appcompat-v7:25.0.0'
     api projectDependencies.supportLibsMultiDex
     // Logging
