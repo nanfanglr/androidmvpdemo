@@ -8,7 +8,7 @@ import com.mvp.rui.androidmvpdemo.di.contract.LoginActView;
 import com.mvp.rui.androidmvpdemo.model.UserInfo;
 import com.mvp.rui.androidmvpdemo.netservice.UserExampleService;
 import com.rui.mvp.basemvp.BaseLoadPresenter;
-import com.rui.mvp.network.ApiErro.MyConsumer;
+import com.rui.mvp.network.ApiErro.ExceptionConsumer;
 
 import javax.inject.Inject;
 
@@ -46,7 +46,7 @@ public class LoginActPresenter extends BaseLoadPresenter<LoginActView> {
                             } else {
                                 getView().onLogin("登陆失败");
                             }
-                        }, new MyConsumer(context))
+                        }, new ExceptionConsumer(context))
         );
     }
 

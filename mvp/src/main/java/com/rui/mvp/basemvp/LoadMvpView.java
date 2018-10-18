@@ -19,6 +19,4 @@ public interface LoadMvpView extends MvpView {
     void showLoadingFailureError();
 
 
-    boolean isNetworkAvailable();
-
 }

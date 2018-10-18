@@ -32,6 +32,7 @@ public class UserInfoRepository {
     private UserExampleService userExampleService;
     /**
      * 用户信息
+     *
      */
     private UserInfo userInfo;
     /**
@@ -65,34 +66,33 @@ public class UserInfoRepository {
      */
     public Flowable<ResultModel<UserInfo>> loginOB(String phone) {
         //这是写的测试数据
-        return Flowable.create((FlowableOnSubscribe<ResultModel<UserInfo>>)
-                emitter -> {
-                    UserInfo userInfo = new UserInfo();
-                    userInfo.setMobileNum(phone);
-                    userInfo.setUserId(1);
-                    userInfo.setAccountId(23);
-                    userInfo.setToken("jklasjdflajsdlfajsdfasd");
-                    userInfo.setUserName("Jay");
-                    userInfo.setUserCode("Jay-2222");
-                    ResultModel<UserInfo> resultModel = new ResultModel<>();
-                    resultModel.setData(userInfo);
-                    resultModel.setCode(1);
-                    emitter.onNext(resultModel);
-                    emitter.onComplete();
-                }, BackpressureStrategy.LATEST)
-                .doOnNext(resultModel -> {
-                    if (resultModel.isSuccess()) {
-                        updateUserInfo(resultModel.getData());
-                    }
-                })
-                ;
-//        //这是接口返回的数据
-//        return userExampleService.login(phone)
-//                .doOnNext(userInfoResultModel -> {
-//                    if (userInfoResultModel.isSuccess()) {
-//                        updateUserInfo(userInfoResultModel.getData());
+//        return Flowable.create((FlowableOnSubscribe<ResultModel<UserInfo>>)
+//                emitter -> {
+//                    UserInfo userInfo = new UserInfo();
+//                    userInfo.setMobileNum(phone);
+//                    userInfo.setUserId(1);
+//                    userInfo.setAccountId(23);
+//                    userInfo.setToken("jklasjdflajsdlfajsdfasd");
+//                    userInfo.setUserName("Jay");
+//                    userInfo.setUserCode("Jay-2222");
+//                    ResultModel<UserInfo> resultModel = new ResultModel<>();
+//                    resultModel.setData(userInfo);
+//                    resultModel.setCode(1);
+//                    emitter.onNext(resultModel);
+//                    emitter.onComplete();
+//                }, BackpressureStrategy.LATEST)
+//                .doOnNext(resultModel -> {
+//                    if (resultModel.isSuccess()) {
+//                        updateUserInfo(resultModel.getData());
 //                    }
 //                });
+        //这是接口返回的数据
+        return userExampleService.login(phone)
+                .doOnNext(userInfoResultModel -> {
+                    if (userInfoResultModel.isSuccess()) {
+                        updateUserInfo(userInfoResultModel.getData());
+                    }
+                });
     }
 
     /**

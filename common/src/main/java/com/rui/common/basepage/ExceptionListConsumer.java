@@ -2,12 +2,12 @@ package com.rui.common.basepage;
 
 import android.content.Context;
 
-import com.rui.mvp.network.ApiErro.MyConsumer;
+import com.rui.mvp.network.ApiErro.ExceptionConsumer;
 
 /**
  * Created by rui on 2018/8/1
  */
-public class MyListConsumer extends MyConsumer {
+public class ExceptionListConsumer extends ExceptionConsumer {
 
     private LoadPageView loadMvpView;
     private int refresh = -1;
@@ -20,7 +20,7 @@ public class MyListConsumer extends MyConsumer {
      * @param loadMvpView
      * @param refresh
      */
-    public MyListConsumer(Context context, LoadPageView loadMvpView, int refresh) {
+    public ExceptionListConsumer(Context context, LoadPageView loadMvpView, int refresh) {
         super(context);
         this.loadMvpView = loadMvpView;
         this.refresh = refresh;

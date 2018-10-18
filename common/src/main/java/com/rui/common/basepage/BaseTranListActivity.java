@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.rui.common.R;
-import com.souyute.viewkit.util.BarUtils;
+import com.rui.toolkit.util.BarUtils;
 
 import javax.annotation.Nullable;
 

@@ -5,43 +5,27 @@ package com.rui.mvp.network.basemodel;
  */
 public class ResultModel<T> extends BaseResultModel {
 
-    protected T data;
-//    protected List<T> data;
+//    protected T data;
+//
+//    public T getData() {
+//        return data;
+//    }
+//
+//    public void setData(T data) {
+//        this.data = data;
+//    }
+
+    /*******************************************************************************/
+
+    protected T obj;
 
     public T getData() {
-        return data;
+        return obj;
     }
 
     public void setData(T data) {
-        this.data = data;
+        this.obj = data;
     }
 
-//    public List getData() {
-//        return data;
-//    }
-
-//    public void setData(List data) {
-//        this.data = data;
-//    }
-
-//
-//    protected T obj;
-//    protected List<T> data;
-//
-//    public T getObj() {
-//        return obj;
-//    }
-//
-//    public void setObj(T obj) {
-//        this.obj = obj;
-//    }
-//
-//    public List getData() {
-//        return data;
-//    }
-//
-//    public void setData(List data) {
-//        this.data = data;
-//    }
 
 }

@@ -7,11 +7,11 @@ import io.reactivex.functions.Consumer;
 /**
  * Created by rui on 2018/8/1
  */
-public class MyConsumer implements Consumer<Throwable> {
+public class ExceptionConsumer implements Consumer<Throwable> {
 
     private Context context;
 
-    public MyConsumer(Context context) {
+    public ExceptionConsumer(Context context) {
         this.context = context;
     }
 

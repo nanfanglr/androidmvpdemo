@@ -9,7 +9,6 @@ import com.hannesdorfmann.mosby3.mvp.delegate.ActivityMvpDelegateImpl;
 import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback;
 import com.hannesdorfmann.mosby3.mvp.viewstate.MvpViewStateActivity;
 import com.rui.mvp.basemvp.LoadMvpView;
-import com.rui.mvp.network.ApiErro.NetworkUtil;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -152,8 +151,4 @@ public abstract class BaseActivity<
 
     }
 
-    @Override
-    public boolean isNetworkAvailable() {
-        return NetworkUtil.isNetworkAvailable(this);
-    }
 }

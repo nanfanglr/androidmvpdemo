@@ -12,7 +12,6 @@ import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegate;
 import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpDelegateImpl;
 import com.hannesdorfmann.mosby3.mvp.delegate.MvpDelegateCallback;
 import com.rui.mvp.basemvp.LoadMvpView;
-import com.rui.mvp.network.ApiErro.NetworkUtil;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -208,11 +207,5 @@ public abstract class BaseLazyFragment<
     public void showLoadingFailureError() {
 
     }
-
-    @Override
-    public boolean isNetworkAvailable() {
-        return NetworkUtil.isNetworkAvailable(getActivity());
-    }
-
 
 }
