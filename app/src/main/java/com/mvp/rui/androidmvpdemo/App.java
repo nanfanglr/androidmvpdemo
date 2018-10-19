@@ -18,7 +18,7 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        //初始化利用RxJavaPlugins处理Api相关异常
+        //初始化利用RxJavaPlugins处理Api相关异常，这样就不需要自定义GsonConverterFactory
         RxJavaPlugins.setOnObservableSubscribe((observable, observer) ->
                 new ObservableSubscribeHooker(observer, App.this));
     }

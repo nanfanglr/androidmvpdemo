@@ -7,7 +7,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.mvp.rui.androidmvpdemo.ui.UserInfoActivity;
+import com.mvp.rui.androidmvpdemo.ui.LoginActivity;
+import com.rui.mvp.network.ApiErro.ApiErrorCode;
 import com.rui.mvp.network.ApiErro.ApiException;
 import com.rui.mvp.network.basemodel.ResultModel;
 
@@ -52,15 +53,12 @@ public class ObservableSubscribeHooker<T> implements Observer<T> {
     private void hookOnNext(T t) {
         if (t instanceof ResultModel) {
             ResultModel baseResponse = (ResultModel) t;
-            if (!baseResponse.isSuccess()) {
-                mainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(context, baseResponse.getMsg(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+            //这里的处理只是举个列子,具体要看业务逻辑是怎么样的
+            if (baseResponse.getCode() == ApiErrorCode.ERROR_USER_AUTHORIZED) {
+                mainHandler.post(() -> Toast.makeText(context,
+                        "登录过期", Toast.LENGTH_SHORT).show());
 
-                Intent intent = new Intent(context.getApplicationContext(), UserInfoActivity.class);
+                Intent intent = new Intent(context.getApplicationContext(), LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
                 throw new ApiException(baseResponse.getCode(), baseResponse.getMsg());
@@ -73,24 +71,17 @@ public class ObservableSubscribeHooker<T> implements Observer<T> {
     public void onError(Throwable e) {
         if (e instanceof ConnectException) {
             Log.e(TAG, "Connect failed: ", e);
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(context.getApplicationContext(), "无网络连接", Toast.LENGTH_SHORT).show();
-                }
-            });
+            mainHandler.post(() ->
+                    Toast.makeText(context.getApplicationContext(),
+                            "无网络连接", Toast.LENGTH_SHORT).show());
             actual.onError(e);
             return;
         }
 
         if (e instanceof SocketTimeoutException) {
             Log.e(TAG, "Time out ", e);
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(context.getApplicationContext(), "服务连接超时", Toast.LENGTH_SHORT).show();
-                }
-            });
+            mainHandler.post(() -> Toast.makeText(context.getApplicationContext(),
+                    "服务连接超时", Toast.LENGTH_SHORT).show());
             actual.onError(e);
             return;
         }
@@ -98,12 +89,8 @@ public class ObservableSubscribeHooker<T> implements Observer<T> {
         if (e instanceof HttpException) {
             Log.e(TAG, "HttpException ", e);
             int code = ((HttpException) e).code();
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(context.getApplicationContext(), String.format("服务不可用，请稍后重试(%d)", code), Toast.LENGTH_SHORT).show();
-                }
-            });
+            mainHandler.post(() -> Toast.makeText(context.getApplicationContext(),
+                    String.format("服务不可用，请稍后重试(%d)", code), Toast.LENGTH_SHORT).show());
             actual.onError(e);
             return;
         }

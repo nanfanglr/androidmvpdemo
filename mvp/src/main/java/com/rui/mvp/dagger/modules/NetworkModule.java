@@ -22,11 +22,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module
 public final class NetworkModule {
-
+    /**
+     * 网络请求超时时间
+     */
     private static final long TIMEOUT_CONNECT = 10 * 1000;
 
     private NetworkModule() {
-
         throw new AssertionError();
     }
 
