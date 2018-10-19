@@ -72,7 +72,7 @@ public class HomeFragment extends BaseLazyFragment<
 
     @Override
     protected void lazyFetchData() {
-        getPresenter().getCategory(null);
+//        getPresenter().getCategory(null);
     }
 
 

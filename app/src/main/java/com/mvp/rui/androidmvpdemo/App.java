@@ -2,7 +2,10 @@ package com.mvp.rui.androidmvpdemo;
 
 import com.mvp.rui.androidmvpdemo.di.component.ApplicationComponent;
 import com.mvp.rui.androidmvpdemo.di.component.DaggerApplicationComponent;
+import com.mvp.rui.androidmvpdemo.rxutils.ObservableSubscribeHooker;
 import com.rui.mvp.BaseApplication.BaseApplication;
+
+import io.reactivex.plugins.RxJavaPlugins;
 
 public class App extends BaseApplication {
 
@@ -15,7 +18,9 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        //初始化利用RxJavaPlugins处理Api相关异常
+        RxJavaPlugins.setOnObservableSubscribe((observable, observer) ->
+                new ObservableSubscribeHooker(observer, App.this));
     }
 
     @Override

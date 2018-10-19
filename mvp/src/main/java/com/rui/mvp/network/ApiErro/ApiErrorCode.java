@@ -25,8 +25,5 @@ public interface ApiErrorCode {
      * 自定义错误
      */
     int ERROR_OTHER = 10;
-    /**
-     * 无网络连接
-     */
-    int ERROR_NO_INTERNET = 11;
+
 }

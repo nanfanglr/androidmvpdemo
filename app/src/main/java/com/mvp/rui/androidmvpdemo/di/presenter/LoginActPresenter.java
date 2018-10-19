@@ -8,7 +8,6 @@ import com.mvp.rui.androidmvpdemo.di.contract.LoginActView;
 import com.mvp.rui.androidmvpdemo.model.UserInfo;
 import com.mvp.rui.androidmvpdemo.netservice.UserExampleService;
 import com.rui.mvp.basemvp.BaseLoadPresenter;
-import com.rui.mvp.network.ApiErro.ExceptionConsumer;
 
 import javax.inject.Inject;
 
@@ -38,15 +37,18 @@ public class LoginActPresenter extends BaseLoadPresenter<LoginActView> {
      */
     public void login(String phone) {
         composite.add(userInfoRepository.loginOB(phone)
-                        .compose(flowableTransformer())
-                        .subscribe(userInfo -> {
+                .compose(flowableTransformer())
+                .subscribe(userInfo -> {
                             if (userInfo.isSuccess()) {
                                 UserInfo info = userInfo.getData();
                                 getView().onLogin(info.toString());
                             } else {
+                                //不成功的事件已经拦截处理为异常，因此这下面else代码是多余的
                                 getView().onLogin("登陆失败");
                             }
-                        }, new ExceptionConsumer(context))
+                        }, throwable -> throwable.printStackTrace()
+                        /*,new ExceptionConsumer(context)*/)
+
         );
     }
 

@@ -22,7 +22,7 @@ public interface UserExampleService {
      * @param userKey
      * @return
      */
-    @GET("/oto-api/inventory/pklogingg")
+    @GET("/oto-api/inventory/pklogin")
     Flowable<ResultModel<UserInfo>> login(@Query("userKey") String userKey);
 
 

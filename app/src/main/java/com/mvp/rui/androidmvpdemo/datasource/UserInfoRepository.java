@@ -32,7 +32,6 @@ public class UserInfoRepository {
     private UserExampleService userExampleService;
     /**
      * 用户信息
-     *
      */
     private UserInfo userInfo;
     /**
@@ -184,7 +183,7 @@ public class UserInfoRepository {
      * @return
      */
     public Flowable<UserInfo> getUserInfoOB() {
-        return Flowable.just(userInfo);
+        return userInfo != null ? Flowable.just(userInfo) : Flowable.empty();
     }
 
 
