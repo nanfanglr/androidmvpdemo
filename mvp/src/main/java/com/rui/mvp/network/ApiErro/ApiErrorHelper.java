@@ -16,12 +16,15 @@ public class ApiErrorHelper {
 
     public static void handleCommonError(Context context, Throwable throwable) {
         if (throwable instanceof ConnectException) {
-            Toast.makeText(context, "无网络连接", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getApplicationContext(),
+                    "无网络连接", Toast.LENGTH_SHORT).show();
         } else if (throwable instanceof SocketTimeoutException) {
-            Toast.makeText(context, "服务连接超时", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getApplicationContext(),
+                    "服务连接超时", Toast.LENGTH_SHORT).show();
         } else if (throwable instanceof HttpException) {
             int code = ((HttpException) throwable).code();
-            Toast.makeText(context, String.format("服务不可用，请稍后重试(%d)", code), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getApplicationContext(),
+                    String.format("服务不可用，请稍后重试(%d)", code), Toast.LENGTH_SHORT).show();
         } else if (throwable instanceof ApiException) {
             //ApiException处理
             ApiException exception = (ApiException) throwable;
@@ -43,11 +46,13 @@ public class ApiErrorHelper {
                     //handle
                     break;
                 default:
-                    Toast.makeText(context, "Api未知错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.getApplicationContext(),
+                            "Api未知错误", Toast.LENGTH_SHORT).show();
                     break;
             }
         } else {
-            Toast.makeText(context, "未知错误", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context.getApplicationContext(),
+                    "未知错误", Toast.LENGTH_SHORT).show();
         }
     }
 
